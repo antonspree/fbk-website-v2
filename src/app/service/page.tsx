@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, MessageSquare, ShoppingBag, Truck, BarChart3, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -76,6 +77,22 @@ export default function ServicePage() {
               </div>
             );
           })}
+
+          <div className="relative w-full aspect-[21/9] rounded-lg overflow-hidden">
+            <Image
+              src="/images/6.webp"
+              alt="Werkzeugmaschinen im Lager – Beratung und Service bei Firmenberatung Kassel"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+            />
+            <div className="absolute inset-0 bg-[#0F1F3D]/50" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-white font-heading text-2xl font-bold text-center px-4">
+                Persönliche Beratung – direkt vor Ort oder telefonisch
+              </p>
+            </div>
+          </div>
 
           <div className="bg-[#0F1F3D] rounded-lg p-7 text-center space-y-4">
             <Phone className="w-10 h-10 text-[#E8621A] mx-auto" />

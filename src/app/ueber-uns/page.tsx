@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -29,6 +30,21 @@ export default function UeberUnsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
+            <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden">
+              <Image
+                src="/images/4.webp"
+                alt="Das Lager der Firmenberatung Kassel mit Werkzeugmaschinen"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
+              <div className="absolute bottom-4 left-5">
+                <span className="text-white font-heading font-bold text-lg">Unser Lager, Kaufungen bei Kassel</span>
+              </div>
+            </div>
+
             <div className="bg-white rounded-lg p-7 border border-gray-200">
               <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">Wer wir sind</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
@@ -86,6 +102,16 @@ export default function UeberUnsPage() {
 
           {/* Sidebar */}
           <div className="space-y-5">
+            <div className="relative w-full aspect-[3/4] rounded-lg overflow-hidden">
+              <Image
+                src="/images/7.webp"
+                alt="Werkzeugmaschinen bei Firmenberatung Kassel"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+              />
+            </div>
+
             <div className="bg-white rounded-lg p-6 border border-gray-200">
               <h3 className="font-heading font-bold text-[#0F1F3D] text-lg mb-4">
                 Kontakt aufnehmen

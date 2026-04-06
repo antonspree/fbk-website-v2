@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Wrench, Package, Users, Truck, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
@@ -74,9 +75,13 @@ export default async function Startseite() {
     <>
       {/* Hero */}
       <section className="relative bg-[#0F1F3D] min-h-[580px] flex items-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url('/hero-maschine.jpg')" }}
+        <Image
+          src="/images/1.webp"
+          alt="Werkzeugmaschinen im Lager der Firmenberatung Kassel"
+          fill
+          className="object-cover opacity-20"
+          priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/90 to-[#0F1F3D]/60" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -205,6 +210,54 @@ export default async function Startseite() {
             <Button asChild variant="outline" className="border-[#0F1F3D] text-[#0F1F3D]">
               <Link href="/maschinen">Alle Maschinen ansehen</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Lager-Einblick */}
+      <section className="py-16 bg-[#F5F5F5]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <span className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest">
+                Einblick
+              </span>
+              <h2 className="font-heading text-4xl font-bold text-[#0F1F3D] mt-1 mb-4">
+                Unser Lager in Kaufungen
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Über 100 Maschinen stehen ständig zur Verfügung – zum Ansehen, Testen und
+                sofortigen Mitnehmen. Unser Lager befindet sich direkt an der A7 bei Kassel,
+                gut erreichbar aus dem gesamten nordhessischen Raum und darüber hinaus.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Ob Einzelmaschine oder kompletter Maschinenpark – besuchen Sie uns vor Ort
+                und überzeugen Sie sich selbst von der Qualität und Auswahl unserer Maschinen.
+              </p>
+              <Button asChild className="bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors">
+                <Link href="/anfahrt">Anfahrt &amp; Öffnungszeiten</Link>
+              </Button>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <Image
+                  src="/images/2.webp"
+                  alt="Maschinenpark im Lager der Firmenberatung Kassel"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
+              <div className="relative aspect-[4/3] rounded-lg overflow-hidden mt-6">
+                <Image
+                  src="/images/3.webp"
+                  alt="Gebrauchte Werkzeugmaschinen zum Verkauf"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

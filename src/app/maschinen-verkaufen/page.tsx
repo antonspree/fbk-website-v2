@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, CheckCircle2, Phone } from "lucide-react";
 import { VerkaufFormular } from "@/components/forms/VerkaufFormular";
 
@@ -40,6 +41,23 @@ export default function MaschinenVerkaufenPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Info */}
           <div className="space-y-6">
+            <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden">
+              <Image
+                src="/images/5.webp"
+                alt="Gebrauchte Werkzeugmaschinen ankauf – Firmenberatung Kassel"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D]/70 to-transparent" />
+              <div className="absolute bottom-4 left-5 right-5">
+                <p className="text-white font-heading font-bold text-xl leading-tight">
+                  Faire Preise für<br />Ihre Maschinen
+                </p>
+              </div>
+            </div>
+
             <div className="bg-white rounded-lg p-7 border border-gray-200">
               <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">
                 Wir kaufen Ihre Maschinen an

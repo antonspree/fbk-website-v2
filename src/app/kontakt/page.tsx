@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { KontaktFormular } from "@/components/forms/KontaktFormular";
 
@@ -28,6 +29,21 @@ export default function KontaktPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Kontaktdaten + Map */}
           <div className="space-y-6">
+            <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden">
+              <Image
+                src="/images/8.webp"
+                alt="Firmenberatung Kassel – Werkzeugmaschinenhandel in Kaufungen"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
+              <div className="absolute bottom-4 left-5">
+                <span className="text-white font-heading font-bold">Walburger Straße 8, 34260 Kaufungen</span>
+              </div>
+            </div>
+
             <div className="bg-white rounded-lg p-7 border border-gray-200">
               <h2 className="font-heading text-xl font-bold text-[#0F1F3D] mb-5">Unsere Kontaktdaten</h2>
               <div className="space-y-5">
