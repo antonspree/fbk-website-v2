@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Firmenberatung Kassel – Website
 
-## Getting Started
+Neue Website für Firmenberatung Kassel e.K. – Werkzeugmaschinenhandel.
 
-First, run the development server:
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router), TypeScript
+- **Styling:** TailwindCSS v4, shadcn/ui
+- **Backend:** Supabase (PostgreSQL, RLS, Storage)
+- **Deployment:** Vercel
+
+## Setup
+
+### 1. Abhängigkeiten installieren
+
+```bash
+npm install
+```
+
+### 2. Umgebungsvariablen konfigurieren
+
+`.env.local` anpassen:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
+SUPABASE_SERVICE_ROLE_KEY=eyJ...
+NEXT_PUBLIC_SITE_URL=https://www.firmenberatung-kassel.de
+```
+
+### 3. Supabase Datenbank einrichten
+
+1. Neues Supabase-Projekt anlegen
+2. SQL aus `supabase/migrations/001_init.sql` im SQL-Editor ausführen
+3. SQL aus `supabase/storage.sql` für Storage-Buckets ausführen
+4. Seed-Daten aus `supabase/seed.sql` einspielen
+5. In Supabase Auth einen Admin-User anlegen
+
+### 4. Entwicklungsserver starten
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Struktur
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/               # Next.js App Router Pages
+│   ├── admin/         # Admin-Bereich (geschützt)
+│   ├── maschinen/     # Maschinenübersicht & Details
+│   ├── blog/          # Blog
+│   └── ...            # Weitere öffentliche Seiten
+├── components/        # React-Komponenten
+│   ├── admin/         # Admin-UI-Komponenten
+│   ├── forms/         # Formulare
+│   ├── layout/        # Header, Footer, AdminSidebar
+│   ├── maschinen/     # Maschinenkomponenten
+│   └── ui/            # shadcn/ui-Komponenten
+└── lib/
+    ├── supabase/      # Supabase-Clients (client, server, admin)
+    ├── types.ts       # TypeScript-Interfaces
+    └── utils.ts       # Hilfsfunktionen
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Admin-Bereich
 
-## Learn More
+Erreichbar unter `/admin`. Anmeldung mit Supabase Auth (E-Mail + Passwort).
 
-To learn more about Next.js, take a look at the following resources:
+- **Dashboard:** Übersicht über Maschinen, Anfragen, Bewertungen
+- **Maschinen:** CRUD, Bildupload zu Supabase Storage
+- **Kategorien:** Verwaltung der Maschinenkategorien
+- **Anfragen:** Eingehende Kunden- und Verkaufsanfragen
+- **Bewertungen:** Freigabe von Kundenbewertungen
+- **Blog:** Markdown-Editor für Blog-Artikel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment (Vercel)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Repository mit Vercel verbinden
+2. Umgebungsvariablen in Vercel-Projekteinstellungen hinzufügen
+3. Deploy – fertig!
