@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
@@ -94,8 +95,17 @@ export default async function NeueMaschinenPage({ searchParams }: NeueMaschinenP
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#0F1F3D] py-14 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1740209475472-aa7d280f7452?w=1600&auto=format&fit=crop&q=80"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/90 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
             <ChevronRight className="w-3 h-3" />

@@ -28,8 +28,17 @@ export default async function BlogPage() {
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#0F1F3D] py-16 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1624841970647-87dce8628d72?w=1600&auto=format&fit=crop&q=80"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/85 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
             <ChevronRight className="w-3 h-3" />

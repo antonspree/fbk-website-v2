@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
@@ -126,8 +127,17 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
       {/* Header */}
-      <div className="bg-[#0F1F3D] py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#0F1F3D] py-14 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1713371398485-7bde1bde9def?w=1600&auto=format&fit=crop&q=80"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/90 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
             <ChevronRight className="w-3 h-3" />
@@ -136,7 +146,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white">
             Gebrauchte Werkzeugmaschinen
           </h1>
-          <p className="text-white/60 mt-2 text-sm">{total} Maschinen gefunden</p>
+          <p className="text-white/60 mt-2 text-sm">{total} Maschinen im Angebot</p>
         </div>
       </div>
 
@@ -212,6 +222,33 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
                 </div>
               </div>
             )}
+          </div>
+        </div>
+      </div>
+      {/* Bild-CTA-Banner */}
+      <div className="relative mt-12 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1666618090858-fbcee636bd3e?w=1600&auto=format&fit=crop&q=80"
+          alt="Werkzeugmaschinen bei Firmenberatung Kassel"
+          width={1600}
+          height={400}
+          className="w-full object-cover h-48 sm:h-64"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-[#0F1F3D]/75 flex items-center justify-center">
+          <div className="text-center px-4">
+            <p className="text-white font-heading text-2xl sm:text-3xl font-bold mb-3">
+              Nicht gefunden, was Sie suchen?
+            </p>
+            <p className="text-white/70 text-sm mb-5">
+              Wir beschaffen Maschinen auf Anfrage – sprechen Sie uns an.
+            </p>
+            <Link
+              href="/kontakt"
+              className="inline-block bg-[#E8621A] hover:bg-[#d05518] text-white font-semibold px-6 py-2.5 rounded transition-colors text-sm"
+            >
+              Suchanfrage stellen
+            </Link>
           </div>
         </div>
       </div>

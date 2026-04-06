@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight, Car, Bus, ParkingSquare } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -28,6 +29,22 @@ export default function AnfahrtPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Lagerbild */}
+        <div className="relative w-full aspect-[21/6] rounded-xl overflow-hidden mb-10">
+          <Image
+            src="https://images.unsplash.com/photo-1716191300020-b52dec5b70a8?w=1600&auto=format&fit=crop&q=80"
+            alt="Unser Standort – Firmenberatung Kassel in Kaufungen"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
+          <div className="absolute bottom-4 left-6">
+            <p className="text-white font-heading font-bold text-lg">Firmenberatung Kassel e.K. · Walburger Straße 8 · 34260 Kaufungen</p>
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div className="space-y-5">
             <div className="bg-white rounded-lg p-6 border border-gray-200 flex gap-5">

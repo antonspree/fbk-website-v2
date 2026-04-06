@@ -32,8 +32,17 @@ export default async function AngebotePage() {
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-[#0F1F3D] py-16 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1713371398484-cc4e4f6a262a?w=1600&auto=format&fit=crop&q=80"
+          alt=""
+          fill
+          className="object-cover opacity-15"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/85 to-transparent" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
             <ChevronRight className="w-3 h-3" />
@@ -124,6 +133,32 @@ export default async function AngebotePage() {
             </div>
           </div>
         )}
+
+        {/* Infobanner */}
+        <div className="mt-14 relative rounded-xl overflow-hidden">
+          <Image
+            src="https://images.unsplash.com/photo-1685713011172-3ba27ff25e22?w=1400&auto=format&fit=crop&q=80"
+            alt="Werkzeugmaschinen Ankauf und Verkauf – Firmenberatung Kassel"
+            width={1400}
+            height={320}
+            className="w-full object-cover h-44 sm:h-56"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[#0F1F3D]/75 flex items-center justify-center">
+            <div className="text-center px-6">
+              <p className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest mb-2">Immer aktuell</p>
+              <p className="text-white font-heading font-bold text-xl sm:text-2xl mb-4">
+                Neues Angebot verpassen? Rufen Sie uns an – wir informieren Sie gerne.
+              </p>
+              <a
+                href="tel:+4956057068"
+                className="inline-block bg-[#E8621A] hover:bg-[#d05518] text-white font-semibold px-6 py-2.5 rounded transition-colors text-sm"
+              >
+                +49 (0) 5605 – 70686
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

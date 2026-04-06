@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { BewertungCard } from "@/components/bewertungen/BewertungCard";
 import { BewertungFormular } from "@/components/bewertungen/BewertungFormular";
@@ -65,6 +66,26 @@ export default async function BewertungenPage() {
             Noch keine Bewertungen vorhanden.
           </p>
         )}
+
+        {/* Bild-Trenner */}
+        <div className="relative my-12 rounded-xl overflow-hidden">
+          <Image
+            src="https://images.unsplash.com/photo-1711418235199-171c8ecb9d12?w=1400&auto=format&fit=crop&q=80"
+            alt="Qualität und Vertrauen bei Firmenberatung Kassel"
+            width={1400}
+            height={320}
+            className="w-full object-cover h-44 sm:h-56"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[#0F1F3D]/70 flex items-center justify-center">
+            <div className="text-center px-6">
+              <p className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest mb-2">Seit über 20 Jahren</p>
+              <p className="text-white font-heading font-bold text-2xl sm:text-3xl">
+                Zufriedene Kunden – unser größter Antrieb
+              </p>
+            </div>
+          </div>
+        </div>
 
         {/* Formular */}
         <div className="max-w-lg mx-auto bg-white rounded-lg p-8 border border-gray-200 shadow-sm">
