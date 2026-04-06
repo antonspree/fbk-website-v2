@@ -26,7 +26,9 @@ interface FormData {
 export function AnfrageFormular({ maschineId, maschineTitel }: AnfrageFormularProps) {
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
-  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<FormData>({
+    defaultValues: { datenschutz: false },
+  });
   const datenschutz = watch("datenschutz");
 
   async function onSubmit(data: FormData) {
