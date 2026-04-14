@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Plus, Pencil, Eye, Search } from "lucide-react";
+import { Plus, Pencil, Eye, Search, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -37,12 +37,20 @@ export default async function AdminMaschinenPage({ searchParams }: Props) {
           <h1 className="font-heading text-3xl font-bold text-[#0F1F3D]">Maschinen</h1>
           <p className="text-gray-500 text-sm mt-1">{maschinen.length} Maschinen insgesamt</p>
         </div>
-        <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
-          <Link href="/admin/maschinen/neu">
-            <Plus className="w-4 h-4 mr-2" />
-            Neue Maschine
-          </Link>
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button asChild variant="outline" className="border-[#0F1F3D] text-[#0F1F3D] hover:bg-gray-50 font-semibold">
+            <Link href="/admin/maschinen/import">
+              <Upload className="w-4 h-4 mr-2" />
+              CSV-Import
+            </Link>
+          </Button>
+          <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+            <Link href="/admin/maschinen/neu">
+              <Plus className="w-4 h-4 mr-2" />
+              Neue Maschine
+            </Link>
+          </Button>
+        </div>
       </div>
 
       {/* Suche */}
