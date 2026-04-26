@@ -3,11 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { KontaktFormular } from "@/components/forms/KontaktFormular";
+import { LagerstandorteKarten } from "@/components/common/LagerstandorteKarten";
+import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Kontakt – Firmenberatung Kassel",
   description:
-    "Kontaktieren Sie die Firmenberatung Kassel. Telefon, E-Mail oder Kontaktformular. Werkzeugmaschinenhandel in Kaufungen bei Kassel.",
+    "Kontaktieren Sie die Firmenberatung Kassel. Zwei Lagerstandorte: Hess. Lichtenau (Fa. Richter) und Niestetal (Fa. Tomic) sowie Firmenadresse in Kaufungen.",
 };
 
 export default function KontaktPage() {
@@ -32,7 +34,7 @@ export default function KontaktPage() {
             <div className="relative w-full aspect-[16/7] rounded-lg overflow-hidden">
               <Image
                 src="/images/8.webp"
-                alt="Firmenberatung Kassel – Werkzeugmaschinenhandel in Kaufungen"
+                alt="Firmenberatung Kassel – Werkzeugmaschinen"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -40,7 +42,9 @@ export default function KontaktPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
               <div className="absolute bottom-4 left-5">
-                <span className="text-white font-heading font-bold">Walburger Straße 8, 34260 Kaufungen</span>
+                <span className="text-white font-heading font-bold text-sm sm:text-base leading-tight max-w-md">
+                  Lager: Hess. Lichtenau &amp; Niestetal – siehe unten
+                </span>
               </div>
             </div>
 
@@ -52,12 +56,36 @@ export default function KontaktPage() {
                     <MapPin className="w-5 h-5 text-[#E8621A]" />
                   </div>
                   <div>
-                    <p className="font-semibold text-[#0F1F3D] text-sm mb-1">Adresse</p>
+                    <p className="font-semibold text-[#0F1F3D] text-sm mb-1">Firmenadresse (Postanschrift)</p>
                     <address className="not-italic text-gray-700 text-sm leading-relaxed">
-                      Firmenberatung Kassel Inh. Alfred Otto e.K.<br />
-                      Walburger Straße 8<br />
-                      34260 Kaufungen
+                      {firmenadresseZeilen.map((z, i) => (
+                        <span key={i}>
+                          {i > 0 && <br />}
+                          {z}
+                        </span>
+                      ))}
                     </address>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-[#E8621A]/10 flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-5 h-5 text-[#E8621A]" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#0F1F3D] text-sm mb-2">Lagerstandorte (Besuch nach Vereinbarung)</p>
+                    <ul className="text-gray-700 text-sm leading-relaxed space-y-3">
+                      {lagerstandorte.map((l) => (
+                        <li key={l.id}>
+                          <span className="font-semibold text-[#0F1F3D]">{l.bezeichnung}</span>{" "}
+                          <span className="text-gray-500">(bei {l.partner})</span>
+                          <br />
+                          {l.strasse}
+                          <br />
+                          {l.plz} {l.ort}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
@@ -105,18 +133,9 @@ export default function KontaktPage() {
               </div>
             </div>
 
-            {/* Google Maps */}
-            <div className="rounded-lg overflow-hidden border border-gray-200">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2491.2!2d9.6!3d51.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba4e5f9c1fd44d%3A0x7ad1e6e7c5adf3d1!2sWalburger%20Stra%C3%9Fe%208%2C%2034260%20Kaufungen!5e0!3m2!1sde!2sde!4v1617000000000"
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Standort Firmenberatung Kassel"
-              />
+            <div>
+              <h3 className="font-heading font-bold text-[#0F1F3D] text-sm mb-3">Karten Lager 1 &amp; Lager 2</h3>
+              <LagerstandorteKarten />
             </div>
           </div>
 

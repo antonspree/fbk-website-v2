@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Car, Bus, ParkingSquare } from "lucide-react";
+import { LagerstandorteKarten } from "@/components/common/LagerstandorteKarten";
+import { lagerstandorte, firmenadresseZeilen } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Anfahrt – So finden Sie uns",
   description:
-    "Anfahrtsbeschreibung zur Firmenberatung Kassel, Walburger Straße 8, 34260 Kaufungen. Mit Auto und ÖPNV gut erreichbar.",
+    "Zwei Lagerstandorte: Hess. Lichtenau (Fa. Richter) und Niestetal (Fa. Tomic). Firmenadresse Kaufungen. Anfahrt mit Auto und ÖPNV.",
 };
 
 export default function AnfahrtPage() {
@@ -22,8 +24,8 @@ export default function AnfahrtPage() {
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white">
             Anfahrt
           </h1>
-          <p className="text-white/60 mt-2 text-sm">
-            Walburger Straße 8, 34260 Kaufungen
+          <p className="text-white/60 mt-2 text-sm max-w-2xl">
+            Lager 1: Hess. Lichtenau (Fa. Richter) · Lager 2: Niestetal (Fa. Tomic) · Post: {firmenadresseZeilen[1]}, {firmenadresseZeilen[2]}
           </p>
         </div>
       </div>
@@ -33,7 +35,7 @@ export default function AnfahrtPage() {
         <div className="relative w-full aspect-[21/6] rounded-xl overflow-hidden mb-10">
           <Image
             src="https://images.unsplash.com/photo-1716191300020-b52dec5b70a8?w=1600&auto=format&fit=crop&q=80"
-            alt="Unser Standort – Firmenberatung Kassel in Kaufungen"
+            alt="Maschinenlager – Firmenberatung Kassel"
             fill
             className="object-cover"
             sizes="100vw"
@@ -41,7 +43,9 @@ export default function AnfahrtPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
           <div className="absolute bottom-4 left-6">
-            <p className="text-white font-heading font-bold text-lg">Firmenberatung Kassel e.K. · Walburger Straße 8 · 34260 Kaufungen</p>
+            <p className="text-white font-heading font-bold text-sm sm:text-lg leading-snug max-w-3xl">
+              Zwei Lager: Hess. Lichtenau (Fa. Richter) &amp; Niestetal (Fa. Tomic) – Post: Kaufungen
+            </p>
           </div>
         </div>
 
@@ -55,10 +59,25 @@ export default function AnfahrtPage() {
               </div>
               <div>
                 <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">Mit dem Auto</h2>
-                <p className="text-gray-700 text-sm leading-relaxed">
-                  Kaufungen liegt östlich von Kassel und ist über die A7 gut erreichbar. Von der Autobahn
-                  nehmen Sie die Ausfahrt <strong>Kassel-Ost / Kaufungen</strong> und folgen der
-                  Beschilderung nach Kaufungen. Die Walburger Straße liegt zentral im Ort.
+                <p className="text-gray-700 text-sm leading-relaxed mb-3">
+                  Unsere Maschinen stehen an <strong>zwei Lagerstandorten</strong> in der Region Kassel. Beide
+                  Orte sind über die <strong>A7</strong> und landesweit gut angebunden. Bitte planen Sie Ihren
+                  Besuch vorab mit uns – wir nennen Ihnen das passende Lager für die von Ihnen ausgewählte Maschine.
+                </p>
+                <ul className="text-gray-700 text-sm space-y-2 leading-relaxed list-disc pl-4">
+                  <li>
+                    <strong>{lagerstandorte[0].bezeichnung}</strong> (bei {lagerstandorte[0].partner}):{" "}
+                    {lagerstandorte[0].plz} {lagerstandorte[0].ort} – südöstlich von Kassel, u. a. von der A7
+                    aus Richtung Region erreichbar.
+                  </li>
+                  <li>
+                    <strong>{lagerstandorte[1].bezeichnung}</strong> (bei {lagerstandorte[1].partner}):{" "}
+                    {lagerstandorte[1].plz} {lagerstandorte[1].ort} – unmittelbar neben Kassel, Anbindung u. a. über
+                    die A7.
+                  </li>
+                </ul>
+                <p className="text-gray-600 text-sm mt-3">
+                  Post- und Firmenadresse: {firmenadresseZeilen[1]}, {firmenadresseZeilen[2]}.
                 </p>
               </div>
             </div>
@@ -74,9 +93,11 @@ export default function AnfahrtPage() {
                   Mit öffentlichen Verkehrsmitteln
                 </h2>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Kaufungen ist über die <strong>Straßenbahnlinie 4</strong> aus dem Kasseler Zentrum
-                  erreichbar. Vom Bahnhof Kassel-Wilhelmshöhe fahren ebenfalls Busverbindungen nach
-                  Kaufungen.
+                  <strong>Kassel / Niestetal</strong> ist mit Bus und Bahn angebunden. Für Anfahrt zu{" "}
+                  {lagerstandorte[1].ort} prüfen Sie am besten die Verbindung zum Kasseler Bahnhof bzw. zu
+                  Haltestellen in Niestetal. Nach <strong>{lagerstandorte[0].ort}</strong> gelangen Sie
+                  u. a. mit Buslinien ab Kassel; genaue Fahrpläne finden Sie beim NVV. Vor Ort: Bitte
+                  vereinbaren Sie den Besuch telefonisch.
                 </p>
               </div>
             </div>
@@ -90,8 +111,9 @@ export default function AnfahrtPage() {
               <div>
                 <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">Parkplätze</h2>
                 <p className="text-gray-700 text-sm leading-relaxed">
-                  Direkt vor dem Gelände stehen ausreichend Parkplätze zur Verfügung. Für LKW und
-                  Transporter ist die Zufahrt ebenfalls möglich.
+                  An beiden Lagerstandorten sind in der Regel Stell- und Ladeplätze vorhanden. Für
+                  LKW, Tieflader und Transporter klären Sie die Zufahrt bitte vorab – wir helfen gern
+                  mit der Einfahrt und Koordination.
                 </p>
               </div>
             </div>
@@ -107,18 +129,9 @@ export default function AnfahrtPage() {
             </div>
           </div>
 
-          {/* Großes Maps-Embed */}
-          <div className="rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2491.2!2d9.6!3d51.28!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba4e5f9c1fd44d%3A0x7ad1e6e7c5adf3d1!2sWalburger%20Stra%C3%9Fe%208%2C%2034260%20Kaufungen!5e0!3m2!1sde!2sde!4v1617000000000"
-              width="100%"
-              height="500"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Anfahrtskarte Firmenberatung Kassel"
-            />
+          <div className="space-y-3">
+            <h2 className="font-heading font-bold text-lg text-[#0F1F3D]">Karten: Lager 1 &amp; Lager 2</h2>
+            <LagerstandorteKarten />
           </div>
         </div>
       </div>

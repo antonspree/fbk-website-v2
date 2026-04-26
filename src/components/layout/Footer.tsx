@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
 
 const footerLinks = {
   maschinen: [
@@ -42,13 +43,38 @@ export function Footer() {
               Ihr zuverlässiger Partner für neue und gebrauchte Werkzeugmaschinen –
               seit über 20 Jahren.
             </p>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#E8621A] flex-shrink-0 mt-0.5" />
-                <address className="not-italic text-white/70 text-sm leading-relaxed">
-                  Walburger Straße 8<br />
-                  34260 Kaufungen
-                </address>
+                <div className="not-italic text-white/70 text-sm leading-relaxed">
+                  <p className="text-white/50 text-xs font-semibold uppercase tracking-wide mb-1.5">Firmenadresse</p>
+                  <address className="not-italic">
+                    {firmenadresseZeilen.map((z, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {z}
+                      </span>
+                    ))}
+                  </address>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 pl-0">
+                <MapPin className="w-4 h-4 text-[#E8621A] flex-shrink-0 mt-0.5" />
+                <div className="not-italic text-white/70 text-sm leading-relaxed">
+                  <p className="text-white/50 text-xs font-semibold uppercase tracking-wide mb-2">Lager</p>
+                  <ul className="space-y-3">
+                    {lagerstandorte.map((l) => (
+                      <li key={l.id}>
+                        <span className="text-white/90 font-medium">{l.bezeichnung}</span>
+                        <span className="text-white/50"> (bei {l.partner})</span>
+                        <br />
+                        {l.strasse}
+                        <br />
+                        {l.plz} {l.ort}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
               <a
                 href="tel:+4956057068"

@@ -35,6 +35,25 @@ export default function ImpressumPage() {
           </section>
 
           <section>
+            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">Lagerstandorte</h2>
+            <p className="mb-2">Die Maschinen stehen wahlweise in folgenden Lager- und Kooperationsstandorten (Besuch nur nach Absprache):</p>
+            <p>
+              <strong>Lager 1 (bei Fa. Richter):</strong>
+              <br />
+              Hopfelderstr. 42
+              <br />
+              37235 Hess. Lichtenau
+            </p>
+            <p className="mt-3">
+              <strong>Lager 2 (bei Fa. Tomic):</strong>
+              <br />
+              Ysenburgstraße 18
+              <br />
+              34266 Niestetal
+            </p>
+          </section>
+
+          <section>
             <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">Vertreten durch</h2>
             <p>Alfred Otto</p>
           </section>

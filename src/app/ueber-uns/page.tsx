@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Über uns – Firmenberatung Kassel e.K.",
@@ -41,7 +42,7 @@ export default function UeberUnsPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
               <div className="absolute bottom-4 left-5">
-                <span className="text-white font-heading font-bold text-lg">Unser Lager, Kaufungen bei Kassel</span>
+                <span className="text-white font-heading font-bold text-lg">Unsere Lager in der Region Kassel</span>
               </div>
             </div>
 
@@ -66,8 +67,8 @@ export default function UeberUnsPage() {
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
                 Wir handeln mit neuen und gebrauchten Werkzeugmaschinen aller Art: Drehmaschinen,
                 Fräsmaschinen, Bearbeitungszentren, Schleifmaschinen, Sägen, Pressen und vieles mehr.
-                Unser Lager in Kaufungen umfasst ständig über 100 Maschinen, die besichtigt und
-                getestet werden können.
+                Unsere Lagerstandorte in der Region Kassel umfassen ständig über 100 Maschinen,
+                die nach Vereinbarung besichtigt und getestet werden können.
               </p>
               <p className="text-gray-700 text-sm leading-relaxed">
                 Neben dem Verkauf kaufen wir auch aktiv gebrauchte Maschinen an – von Einzelmaschinen
@@ -89,10 +90,13 @@ export default function UeberUnsPage() {
             </div>
 
             <div className="bg-white rounded-lg p-7 border border-gray-200">
-              <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">Unser Standort</h2>
+              <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">Unsere Standorte</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                Unser Lager befindet sich in Kaufungen, direkt an der A7 und gut erreichbar aus dem
-                gesamten nordhessischen Raum.
+                Wir unterhalten <strong>zwei Lager</strong> mit jeweils eigenem Standort:{" "}
+                <strong>Hess. Lichtenau</strong> (Kooperation Fa. Richter) und{" "}
+                <strong>Niestetal</strong> (Kooperation Fa. Tomic). Die Postadresse der Firma
+                bleibt {firmenadresseZeilen[2]}. Beide Lager sind über die A7 und für Kunden aus dem
+                gesamten nordhessischen Raum gut erreichbar.
               </p>
               <Button asChild variant="outline" className="border-[#0F1F3D] text-[#0F1F3D] hover:bg-[#0F1F3D] hover:text-white">
                 <Link href="/anfahrt">Anfahrtsbeschreibung</Link>
@@ -119,9 +123,22 @@ export default function UeberUnsPage() {
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-[#E8621A] flex-shrink-0 mt-0.5" />
-                  <address className="not-italic text-gray-700 leading-relaxed">
-                    Walburger Straße 8<br />34260 Kaufungen
-                  </address>
+                  <div className="not-italic text-gray-700 leading-relaxed text-sm">
+                    <p className="font-medium text-[#0F1F3D]">Postanschrift</p>
+                    {firmenadresseZeilen[0]}
+                    <br />
+                    {firmenadresseZeilen[1]}
+                    <br />
+                    {firmenadresseZeilen[2]}
+                    <p className="font-medium text-[#0F1F3D] mt-3">Lager</p>
+                    <ul className="mt-1 space-y-1.5">
+                      {lagerstandorte.map((l) => (
+                        <li key={l.id}>
+                          {l.bezeichnung} ({l.partner}): {l.strasse}, {l.plz} {l.ort}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
                 <a href="tel:+4956057068" className="flex items-center gap-3 text-gray-700 hover:text-[#E8621A] transition-colors">
                   <Phone className="w-4 h-4 text-[#E8621A]" />

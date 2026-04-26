@@ -223,16 +223,17 @@ export default async function Startseite() {
                 Einblick
               </span>
               <h2 className="font-heading text-4xl font-bold text-[#0F1F3D] mt-1 mb-4">
-                Unser Lager in Kaufungen
+                Unsere Lager in der Region Kassel
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
                 Über 100 Maschinen stehen ständig zur Verfügung – zum Ansehen, Testen und
-                sofortigen Mitnehmen. Unser Lager befindet sich direkt an der A7 bei Kassel,
-                gut erreichbar aus dem gesamten nordhessischen Raum und darüber hinaus.
+                sofortigen Mitnehmen. Unsere Bestände stehen in <strong>zwei Lagerstandorten</strong>{" "}
+                (Hess. Lichtenau bei Fa. Richter und Niestetal bei Fa. Tomic) – beide an die A7
+                angebunden, gut erreichbar aus ganz Nordhessen und darüber hinaus.
               </p>
               <p className="text-gray-700 leading-relaxed mb-6">
-                Ob Einzelmaschine oder kompletter Maschinenpark – besuchen Sie uns vor Ort
-                und überzeugen Sie sich selbst von der Qualität und Auswahl unserer Maschinen.
+                Ob Einzelmaschine oder kompletter Maschinenpark – vereinbaren Sie einen Termin, wir
+                nennen Ihnen den passenden Standort, und überzeugen Sie sich vor Ort.
               </p>
               <Button asChild className="bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors">
                 <Link href="/anfahrt">Anfahrt &amp; Öffnungszeiten</Link>
