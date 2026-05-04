@@ -28,7 +28,7 @@ export default async function BlogPage() {
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="relative bg-[#0F1F3D] py-16 overflow-hidden">
+      <div className="relative bg-[#6397cc] py-16 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1624841970647-87dce8628d72?w=1600&auto=format&fit=crop&q=80"
           alt=""
@@ -37,7 +37,7 @@ export default async function BlogPage() {
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/85 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#6397cc] via-[#6397cc]/85 to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -61,7 +61,7 @@ export default async function BlogPage() {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg hover:border-[#E8621A]/30 transition-all duration-300 flex flex-col"
+                className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg hover:border-[#1f4a73]/30 transition-all duration-300 flex flex-col"
               >
                 {post.bild_url ? (
                   <div className="relative aspect-[16/9] bg-gray-100 overflow-hidden">
@@ -74,14 +74,14 @@ export default async function BlogPage() {
                     />
                   </div>
                 ) : (
-                  <div className="aspect-[16/9] bg-gradient-to-br from-[#0F1F3D] to-[#1a2f52] flex items-center justify-center">
+                  <div className="aspect-[16/9] bg-gradient-to-br from-[#6397cc] to-[#45709a] flex items-center justify-center">
                     <span className="font-heading text-white/20 text-4xl font-bold">FBK</span>
                   </div>
                 )}
                 <div className="p-5 flex flex-col flex-1 gap-3">
                   <div className="flex items-center gap-3">
                     {post.kategorie && (
-                      <Badge variant="outline" className="text-xs border-[#E8621A] text-[#E8621A]">
+                      <Badge variant="outline" className="text-xs border-[#1f4a73] text-[#1f4a73]">
                         {post.kategorie}
                       </Badge>
                     )}
@@ -90,13 +90,13 @@ export default async function BlogPage() {
                       <span>{formatDatum(post.created_at)}</span>
                     </div>
                   </div>
-                  <h2 className="font-heading font-bold text-[#0F1F3D] text-lg leading-tight group-hover:text-[#E8621A] transition-colors">
+                  <h2 className="font-heading font-bold text-[#6397cc] text-lg leading-tight group-hover:text-[#1f4a73] transition-colors">
                     {post.titel}
                   </h2>
                   <p className="text-gray-600 text-sm leading-relaxed flex-1 line-clamp-3">
                     {post.teaser}
                   </p>
-                  <div className="flex items-center gap-1 text-[#E8621A] text-sm font-semibold mt-auto">
+                  <div className="flex items-center gap-1 text-[#1f4a73] text-sm font-semibold mt-auto">
                     Weiterlesen <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </div>

@@ -6,7 +6,7 @@ export function LagerstandorteKarten() {
       {lagerstandorte.map((l) => (
         <div key={l.id} className="space-y-3">
           <div className="bg-white rounded-lg border border-gray-200 p-5">
-            <h3 className="font-heading font-bold text-lg text-[#0F1F3D]">{l.bezeichnung}</h3>
+            <h3 className="font-heading font-bold text-lg text-[#6397cc]">{l.bezeichnung}</h3>
             <p className="text-sm text-gray-600">bei {l.partner}</p>
             <address className="not-italic text-sm text-gray-800 mt-3 leading-relaxed">
               {l.strasse}

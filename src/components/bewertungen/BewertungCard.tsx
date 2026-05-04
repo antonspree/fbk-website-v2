@@ -14,7 +14,7 @@ export function BewertungCard({ bewertung }: BewertungCardProps) {
         &ldquo;{bewertung.text}&rdquo;
       </p>
       <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-        <span className="font-semibold text-[#0F1F3D] text-sm">{bewertung.name}</span>
+        <span className="font-semibold text-[#6397cc] text-sm">{bewertung.name}</span>
         <span className="text-gray-400 text-xs">{formatDatum(bewertung.created_at)}</span>
       </div>
     </div>

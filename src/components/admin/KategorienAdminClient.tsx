@@ -61,7 +61,7 @@ export function KategorienAdminClient({ kategorien }: { kategorien: Kategorie[] 
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Liste */}
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-100 font-heading font-bold text-[#0F1F3D] text-sm">
+        <div className="px-5 py-4 border-b border-gray-100 font-heading font-bold text-[#6397cc] text-sm">
           Kategorien
         </div>
         <div className="divide-y divide-gray-100">
@@ -69,7 +69,7 @@ export function KategorienAdminClient({ kategorien }: { kategorien: Kategorie[] 
             <div key={k.id}>
               <div className="px-5 py-3 flex items-center justify-between">
                 <div>
-                  <p className="font-medium text-[#0F1F3D] text-sm">{k.name}</p>
+                  <p className="font-medium text-[#6397cc] text-sm">{k.name}</p>
                   <p className="text-xs text-gray-400">/{k.slug}</p>
                 </div>
                 <button
@@ -100,7 +100,7 @@ export function KategorienAdminClient({ kategorien }: { kategorien: Kategorie[] 
 
       {/* Neu anlegen */}
       <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-        <h2 className="font-heading font-bold text-[#0F1F3D]">Neue Kategorie</h2>
+        <h2 className="font-heading font-bold text-[#6397cc]">Neue Kategorie</h2>
         <div>
           <Label>Name</Label>
           <Input
@@ -122,7 +122,7 @@ export function KategorienAdminClient({ kategorien }: { kategorien: Kategorie[] 
         <Button
           onClick={handleCreate}
           disabled={loading || !name.trim()}
-          className="w-full bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors"
+          className="w-full bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 font-semibold transition-colors"
         >
           <Plus className="w-4 h-4 mr-2" />
           {loading ? "Wird angelegt…" : "Kategorie anlegen"}

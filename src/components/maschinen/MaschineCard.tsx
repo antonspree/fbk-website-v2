@@ -15,7 +15,7 @@ export function MaschineCard({ maschine }: MaschineCardProps) {
     ?? maschine.maschinen_bilder?.[0];
 
   return (
-    <div className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg hover:border-[#E8621A]/30 transition-all duration-300 flex flex-col">
+    <div className="group bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg hover:border-[#1f4a73]/30 transition-all duration-300 flex flex-col">
       {/* Bild */}
       <Link href={`/maschinen/${maschine.slug}`} className="block relative aspect-[4/3] bg-gray-100 overflow-hidden">
         {titelbild ? (
@@ -37,7 +37,7 @@ export function MaschineCard({ maschine }: MaschineCardProps) {
               className={
                 maschine.zustand === "neu"
                   ? "bg-green-600 text-white border-0 text-xs"
-                  : "bg-[#0F1F3D] text-white border-0 text-xs"
+                  : "bg-[#6397cc] text-white border-0 text-xs"
               }
             >
               {maschine.zustand === "neu" ? "Neu" : "Gebraucht"}
@@ -61,7 +61,7 @@ export function MaschineCard({ maschine }: MaschineCardProps) {
             )}
           </div>
           <Link href={`/maschinen/${maschine.slug}`}>
-            <h3 className="font-heading font-bold text-[#0F1F3D] text-lg leading-tight hover:text-[#E8621A] transition-colors line-clamp-2">
+            <h3 className="font-heading font-bold text-[#6397cc] text-lg leading-tight hover:text-[#1f4a73] transition-colors line-clamp-2">
               {maschine.titel}
             </h3>
           </Link>
@@ -76,7 +76,7 @@ export function MaschineCard({ maschine }: MaschineCardProps) {
           <Button
             asChild
             size="sm"
-            className="bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 text-xs group/btn transition-colors"
+            className="bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 text-xs group/btn transition-colors"
           >
             <Link href={`/maschinen/${maschine.slug}`}>
               Details

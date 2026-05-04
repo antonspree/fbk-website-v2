@@ -1,6 +1,7 @@
 # Firmenberatung Kassel – Website
 
-Neue Website für Firmenberatung Kassel e.K. – Werkzeugmaschinenhandel.
+Neue Website für Firmenberatung Kassel
+Inh. Alfred Otto e.K. – Werkzeugmaschinenhandel.
 
 ## Tech Stack
 

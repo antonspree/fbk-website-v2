@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, Phone } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { SiteLogo } from "@/components/layout/SiteLogo";
 
 const navLinks = [
   {
@@ -27,15 +28,12 @@ export function Header() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
-    <header className="sticky top-0 z-50 bg-[#0F1F3D] shadow-lg">
+    <header className="sticky top-0 z-50 bg-[#6397cc] shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
-            <span className="font-heading text-white text-xl font-bold tracking-wide leading-tight">
-              FIRMENBERATUNG<br />
-              <span className="text-[#E8621A]">KASSEL</span>
-            </span>
+          <Link href="/" className="flex-shrink-0 flex items-center py-1">
+            <SiteLogo variant="header" priority />
           </Link>
 
           {/* Desktop Navigation */}
@@ -63,7 +61,7 @@ export function Header() {
                         <Link
                           key={child.href}
                           href={child.href}
-                          className="block px-4 py-3 text-sm text-gray-800 hover:bg-[#0F1F3D] hover:text-white transition-colors font-medium"
+                          className="block px-4 py-3 text-sm text-gray-800 hover:bg-[#6397cc] hover:text-white transition-colors font-medium"
                         >
                           {child.label}
                         </Link>
@@ -89,10 +87,10 @@ export function Header() {
               href="tel:+4956057068"
               className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
             >
-              <Phone className="w-4 h-4 text-[#E8621A]" />
+              <Phone className="w-4 h-4 text-[#1f4a73]" />
               <span>05605 – 70686</span>
             </a>
-            <Button asChild size="sm" className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+            <Button asChild size="sm" className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
               <Link href="/kontakt">Anfrage senden</Link>
             </Button>
           </div>
@@ -103,12 +101,10 @@ export function Header() {
               <Menu className="w-6 h-6" />
               <span className="sr-only">Menü öffnen</span>
             </SheetTrigger>
-            <SheetContent side="right" className="bg-[#0F1F3D] text-white border-0 w-80 p-0">
+            <SheetContent side="right" className="bg-[#6397cc] text-white border-0 w-80 p-0">
               <div className="flex flex-col h-full">
                 <div className="flex items-center justify-between p-6 border-b border-white/10">
-                  <span className="font-heading text-lg font-bold">
-                    FIRMENBERATUNG <span className="text-[#E8621A]">KASSEL</span>
-                  </span>
+                  <SiteLogo variant="header" priority={false} />
                 </div>
                 <nav className="flex-1 overflow-y-auto p-6 space-y-1">
                   {navLinks.map((link) => (
@@ -140,10 +136,10 @@ export function Header() {
                     href="tel:+4956057068"
                     className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
                   >
-                    <Phone className="w-4 h-4 text-[#E8621A]" />
+                    <Phone className="w-4 h-4 text-[#1f4a73]" />
                     <span>05605 – 70686</span>
                   </a>
-                  <Button asChild className="w-full bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+                  <Button asChild className="w-full bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
                     <Link href="/kontakt">Anfrage senden</Link>
                   </Button>
                 </div>

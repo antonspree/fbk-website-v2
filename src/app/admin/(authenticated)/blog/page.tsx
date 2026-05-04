@@ -22,10 +22,10 @@ export default async function AdminBlogPage() {
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-heading text-3xl font-bold text-[#0F1F3D]">Blog</h1>
+          <h1 className="font-heading text-3xl font-bold text-[#6397cc]">Blog</h1>
           <p className="text-gray-500 text-sm mt-1">{posts.length} Artikel</p>
         </div>
-        <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+        <Button asChild className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
           <Link href="/admin/blog/neu">
             <Plus className="w-4 h-4 mr-2" />
             Neuer Artikel
@@ -49,7 +49,7 @@ export default async function AdminBlogPage() {
               posts.map(p => (
                 <tr key={p.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-4 py-3">
-                    <p className="font-medium text-[#0F1F3D] line-clamp-1">{p.titel}</p>
+                    <p className="font-medium text-[#6397cc] line-clamp-1">{p.titel}</p>
                     <p className="text-gray-400 text-xs font-mono">/{p.slug}</p>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
@@ -68,11 +68,11 @@ export default async function AdminBlogPage() {
                   <td className="px-4 py-3 text-right">
                     <div className="flex items-center gap-2 justify-end">
                       {p.veroeffentlicht && (
-                        <Link href={`/blog/${p.slug}`} target="_blank" className="text-gray-400 hover:text-[#0F1F3D] transition-colors">
+                        <Link href={`/blog/${p.slug}`} target="_blank" className="text-gray-400 hover:text-[#6397cc] transition-colors">
                           <Eye className="w-4 h-4" />
                         </Link>
                       )}
-                      <Link href={`/admin/blog/${p.id}`} className="text-gray-400 hover:text-[#E8621A] transition-colors">
+                      <Link href={`/admin/blog/${p.id}`} className="text-gray-400 hover:text-[#1f4a73] transition-colors">
                         <Pencil className="w-4 h-4" />
                       </Link>
                     </div>

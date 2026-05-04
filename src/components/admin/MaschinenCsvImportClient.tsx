@@ -94,7 +94,7 @@ export function MaschinenCsvImportClient() {
   return (
     <div className="space-y-8 max-w-4xl">
       <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-        <h2 className="font-heading font-bold text-[#0F1F3D] text-lg">So funktionieren die Bilder</h2>
+        <h2 className="font-heading font-bold text-[#6397cc] text-lg">So funktionieren die Bilder</h2>
         <ul className="text-sm text-gray-700 space-y-2 list-disc pl-5 leading-relaxed">
           <li>
             Pro Maschine Spalten <code className="text-xs bg-gray-100 px-1 rounded">bild_url_1</code>,{" "}
@@ -113,7 +113,7 @@ export function MaschinenCsvImportClient() {
         <div className="flex flex-wrap items-center gap-3">
           <label className="cursor-pointer">
             <input type="file" accept=".csv,.txt" className="hidden" onChange={onFile} />
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#0F1F3D] text-white text-sm font-semibold rounded-lg hover:bg-[#E8621A] transition-colors">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#6397cc] text-white text-sm font-semibold rounded-lg hover:bg-[#1f4a73] transition-colors">
               <FileSpreadsheet className="w-4 h-4" />
               CSV-Datei wählen
             </span>
@@ -121,7 +121,7 @@ export function MaschinenCsvImportClient() {
           <a
             href="/templates/maschinen-import-vorlage.csv"
             download
-            className="text-sm text-[#E8621A] font-medium hover:underline"
+            className="text-sm text-[#1f4a73] font-medium hover:underline"
           >
             Vorlage herunterladen
           </a>
@@ -149,7 +149,7 @@ export function MaschinenCsvImportClient() {
             type="button"
             onClick={importieren}
             disabled={loading || !vorschau?.gueltig.length}
-            className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold"
+            className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold"
           >
             <Upload className="w-4 h-4 mr-2" />
             {loading ? "Import läuft…" : "Import starten"}
@@ -197,7 +197,7 @@ export function MaschinenCsvImportClient() {
         sowie <strong>bild_url_1 … bild_url_10</strong>.
       </p>
 
-      <Link href="/admin/maschinen" className="inline-block text-sm text-[#E8621A] font-medium hover:underline">
+      <Link href="/admin/maschinen" className="inline-block text-sm text-[#1f4a73] font-medium hover:underline">
         ← Zurück zur Maschinenliste
       </Link>
     </div>

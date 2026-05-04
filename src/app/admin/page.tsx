@@ -34,11 +34,11 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0F1F3D] flex items-center justify-center px-4">
+    <div className="min-h-screen bg-[#6397cc] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#E8621A]/15 mb-4">
-            <Wrench className="w-8 h-8 text-[#E8621A]" />
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#1f4a73]/15 mb-4">
+            <Wrench className="w-8 h-8 text-[#1f4a73]" />
           </div>
           <h1 className="font-heading text-2xl font-bold text-white">Admin-Login</h1>
           <p className="text-white/50 text-sm mt-1">Firmenberatung Kassel</p>
@@ -90,7 +90,7 @@ export default function AdminLoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors"
+              className="w-full bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 font-semibold transition-colors"
             >
               {loading ? "Wird angemeldet…" : "Anmelden"}
             </Button>

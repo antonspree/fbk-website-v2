@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s – Firmenberatung Kassel",
   },
   description:
-    "Firmenberatung Kassel e.K. – Ihr Händler für neue und gebrauchte Werkzeugmaschinen. Drehmaschinen, Fräsmaschinen, Bearbeitungszentren und mehr. Persönliche Beratung aus Kaufungen bei Kassel.",
+    "Firmenberatung Kassel Inh. Alfred Otto e.K. – Ihr Händler für neue und gebrauchte Werkzeugmaschinen. Drehmaschinen, Fräsmaschinen, Bearbeitungszentren und mehr. Persönliche Beratung aus Kaufungen bei Kassel.",
   keywords: [
     "Werkzeugmaschinen",
     "gebrauchte Werkzeugmaschinen",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     "Kaufungen",
   ],
   openGraph: {
-    siteName: "Firmenberatung Kassel e.K.",
+    siteName: "Firmenberatung Kassel Inh. Alfred Otto e.K.",
     locale: "de_DE",
     type: "website",
   },

@@ -17,7 +17,7 @@ export default async function AdminKategorienPage() {
   return (
     <div className="p-8">
       <div className="mb-6">
-        <h1 className="font-heading text-3xl font-bold text-[#0F1F3D]">Kategorien</h1>
+        <h1 className="font-heading text-3xl font-bold text-[#6397cc]">Kategorien</h1>
         <p className="text-gray-500 text-sm mt-1">{kategorien.length} Kategorien</p>
       </div>
       <KategorienAdminClient kategorien={kategorien} />

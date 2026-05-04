@@ -74,7 +74,7 @@ export default async function Startseite() {
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-[#0F1F3D] min-h-[580px] flex items-center overflow-hidden">
+      <section className="relative bg-[#6397cc] min-h-[580px] flex items-center overflow-hidden">
         <Image
           src="/images/1.webp"
           alt="Werkzeugmaschinen im Lager der Firmenberatung Kassel"
@@ -83,15 +83,15 @@ export default async function Startseite() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/90 to-[#0F1F3D]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#6397cc] via-[#6397cc]/90 to-[#6397cc]/60" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-2xl">
-            <span className="inline-block text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest mb-4">
+            <span className="inline-block text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest mb-4">
               Werkzeugmaschinenhandel aus Kaufungen bei Kassel
             </span>
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-none mb-6">
               WERKZEUG&shy;MASCHINEN –<br />
-              <span className="text-[#E8621A]">HANDEL &amp; INDUSTRIE</span>
+              <span className="text-[#1f4a73]">HANDEL &amp; INDUSTRIE</span>
             </h1>
             <p className="text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
               Neue und gebrauchte Maschinen für Industrie und Handwerk. Persönliche Beratung,
@@ -101,7 +101,7 @@ export default async function Startseite() {
               <Button
                 asChild
                 size="lg"
-                className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-bold font-heading text-base px-8"
+                className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-bold font-heading text-base px-8"
               >
                 <Link href="/maschinen">
                   Maschinen entdecken
@@ -119,15 +119,15 @@ export default async function Startseite() {
             </div>
             <div className="mt-8 flex flex-wrap gap-6 text-white/60 text-sm">
               <div className="flex items-center gap-2">
-                <span className="text-[#E8621A] font-bold text-xl font-heading">100+</span>
+                <span className="text-[#1f4a73] font-bold text-xl font-heading">100+</span>
                 <span>Maschinen im Lager</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[#E8621A] font-bold text-xl font-heading">20+</span>
+                <span className="text-[#1f4a73] font-bold text-xl font-heading">20+</span>
                 <span>Jahre Erfahrung</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-[#E8621A] font-bold text-xl font-heading">DE/EU</span>
+                <span className="text-[#1f4a73] font-bold text-xl font-heading">DE/EU</span>
                 <span>Lieferung möglich</span>
               </div>
             </div>
@@ -140,16 +140,16 @@ export default async function Startseite() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <span className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest">
+              <span className="text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest">
                 Sortiment
               </span>
-              <h2 className="font-heading text-4xl font-bold text-[#0F1F3D] mt-1">
+              <h2 className="font-heading text-4xl font-bold text-[#6397cc] mt-1">
                 Unsere Maschinenkategorien
               </h2>
             </div>
             <Link
               href="/maschinen"
-              className="hidden sm:flex items-center gap-1 text-[#E8621A] font-semibold text-sm hover:gap-2 transition-all"
+              className="hidden sm:flex items-center gap-1 text-[#1f4a73] font-semibold text-sm hover:gap-2 transition-all"
             >
               Alle ansehen <ChevronRight className="w-4 h-4" />
             </Link>
@@ -159,10 +159,10 @@ export default async function Startseite() {
               <Link
                 key={kat.slug}
                 href={`/maschinen?kategorie=${kat.slug}`}
-                className="group bg-white rounded-lg p-5 border border-gray-200 hover:border-[#E8621A] hover:shadow-md transition-all duration-200 flex flex-col items-center text-center"
+                className="group bg-white rounded-lg p-5 border border-gray-200 hover:border-[#1f4a73] hover:shadow-md transition-all duration-200 flex flex-col items-center text-center"
               >
                 <span className="text-3xl mb-3">{kat.icon}</span>
-                <span className="font-heading font-bold text-[#0F1F3D] text-sm leading-tight group-hover:text-[#E8621A] transition-colors">
+                <span className="font-heading font-bold text-[#6397cc] text-sm leading-tight group-hover:text-[#1f4a73] transition-colors">
                   {kat.name}
                 </span>
               </Link>
@@ -176,16 +176,16 @@ export default async function Startseite() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
-              <span className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest">
+              <span className="text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest">
                 Empfehlungen
               </span>
-              <h2 className="font-heading text-4xl font-bold text-[#0F1F3D] mt-1">
+              <h2 className="font-heading text-4xl font-bold text-[#6397cc] mt-1">
                 Aktuelle Maschinen
               </h2>
             </div>
             <Link
               href="/maschinen"
-              className="hidden sm:flex items-center gap-1 text-[#E8621A] font-semibold text-sm hover:gap-2 transition-all"
+              className="hidden sm:flex items-center gap-1 text-[#1f4a73] font-semibold text-sm hover:gap-2 transition-all"
             >
               Alle Maschinen <ChevronRight className="w-4 h-4" />
             </Link>
@@ -200,14 +200,14 @@ export default async function Startseite() {
           ) : (
             <div className="text-center py-16 text-gray-500">
               <p className="text-lg mb-4">Derzeit keine hervorgehobenen Maschinen vorhanden.</p>
-              <Button asChild className="bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0">
+              <Button asChild className="bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0">
                 <Link href="/maschinen">Alle Maschinen anzeigen</Link>
               </Button>
             </div>
           )}
 
           <div className="mt-8 text-center sm:hidden">
-            <Button asChild variant="outline" className="border-[#0F1F3D] text-[#0F1F3D]">
+            <Button asChild variant="outline" className="border-[#6397cc] text-[#6397cc]">
               <Link href="/maschinen">Alle Maschinen ansehen</Link>
             </Button>
           </div>
@@ -219,10 +219,10 @@ export default async function Startseite() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <span className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest">
+              <span className="text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest">
                 Einblick
               </span>
-              <h2 className="font-heading text-4xl font-bold text-[#0F1F3D] mt-1 mb-4">
+              <h2 className="font-heading text-4xl font-bold text-[#6397cc] mt-1 mb-4">
                 Unsere Lager in der Region Kassel
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -235,7 +235,7 @@ export default async function Startseite() {
                 Ob Einzelmaschine oder kompletter Maschinenpark – vereinbaren Sie einen Termin, wir
                 nennen Ihnen den passenden Standort, und überzeugen Sie sich vor Ort.
               </p>
-              <Button asChild className="bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors">
+              <Button asChild className="bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 font-semibold transition-colors">
                 <Link href="/anfahrt">Anfahrt &amp; Öffnungszeiten</Link>
               </Button>
             </div>
@@ -264,10 +264,10 @@ export default async function Startseite() {
       </section>
 
       {/* USP */}
-      <section className="py-16 bg-[#0F1F3D]">
+      <section className="py-16 bg-[#6397cc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest">
+            <span className="text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest">
               Ihre Vorteile
             </span>
             <h2 className="font-heading text-4xl font-bold text-white mt-1">
@@ -279,8 +279,8 @@ export default async function Startseite() {
               const Icon = usp.icon;
               return (
                 <div key={usp.title} className="text-center">
-                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#E8621A]/15 mb-5">
-                    <Icon className="w-7 h-7 text-[#E8621A]" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#1f4a73]/15 mb-5">
+                    <Icon className="w-7 h-7 text-[#1f4a73]" />
                   </div>
                   <h3 className="font-heading font-bold text-white text-lg mb-2">{usp.title}</h3>
                   <p className="text-white/60 text-sm leading-relaxed">{usp.text}</p>
@@ -296,10 +296,10 @@ export default async function Startseite() {
         <section className="py-16 bg-[#F5F5F5]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <span className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest">
+              <span className="text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest">
                 Kundenstimmen
               </span>
-              <h2 className="font-heading text-4xl font-bold text-[#0F1F3D] mt-1">
+              <h2 className="font-heading text-4xl font-bold text-[#6397cc] mt-1">
                 Das sagen unsere Kunden
               </h2>
             </div>
@@ -311,7 +311,7 @@ export default async function Startseite() {
                     &ldquo;{b.text}&rdquo;
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="font-semibold text-[#0F1F3D] text-sm">{b.name}</span>
+                    <span className="font-semibold text-[#6397cc] text-sm">{b.name}</span>
                     <span className="text-gray-400 text-xs">{formatDatum(b.created_at)}</span>
                   </div>
                 </div>
@@ -320,7 +320,7 @@ export default async function Startseite() {
             <div className="text-center mt-8">
               <Link
                 href="/bewertungen"
-                className="inline-flex items-center gap-1 text-[#E8621A] font-semibold text-sm hover:gap-2 transition-all"
+                className="inline-flex items-center gap-1 text-[#1f4a73] font-semibold text-sm hover:gap-2 transition-all"
               >
                 Alle Bewertungen lesen <ChevronRight className="w-4 h-4" />
               </Link>
@@ -330,7 +330,7 @@ export default async function Startseite() {
       )}
 
       {/* CTA Banner */}
-      <section className="py-14 bg-[#E8621A]">
+      <section className="py-14 bg-[#1f4a73]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center justify-between gap-8">
           <div>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-2">
@@ -344,7 +344,7 @@ export default async function Startseite() {
           <Button
             asChild
             size="lg"
-            className="flex-shrink-0 bg-white text-[#E8621A] hover:bg-gray-100 border-0 font-bold font-heading text-base px-8 shadow-lg"
+            className="flex-shrink-0 bg-white text-[#1f4a73] hover:bg-gray-100 border-0 font-bold font-heading text-base px-8 shadow-lg"
           >
             <Link href="/maschinen-verkaufen">
               Maschine verkaufen

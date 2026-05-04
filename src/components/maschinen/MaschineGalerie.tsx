@@ -83,7 +83,7 @@ export function MaschineGalerie({ bilder, titel }: MaschineGalerieProps) {
               key={bild.id}
               onClick={() => setActiveIdx(idx)}
               className={`relative flex-shrink-0 w-16 h-16 rounded overflow-hidden border-2 transition-colors ${
-                idx === activeIdx ? "border-[#E8621A]" : "border-transparent hover:border-gray-300"
+                idx === activeIdx ? "border-[#1f4a73]" : "border-transparent hover:border-gray-300"
               }`}
             >
               <Image

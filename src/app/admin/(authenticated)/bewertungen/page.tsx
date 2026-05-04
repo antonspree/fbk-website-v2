@@ -18,10 +18,10 @@ export default async function AdminBewertungenPage() {
   return (
     <div className="p-8">
       <div className="mb-6">
-        <h1 className="font-heading text-3xl font-bold text-[#0F1F3D]">Bewertungen</h1>
+        <h1 className="font-heading text-3xl font-bold text-[#6397cc]">Bewertungen</h1>
         <p className="text-gray-500 text-sm mt-1">
           {bewertungen.length} Bewertungen insgesamt
-          {ausstehend > 0 && <span className="ml-2 text-[#E8621A] font-semibold">· {ausstehend} ausstehend</span>}
+          {ausstehend > 0 && <span className="ml-2 text-[#1f4a73] font-semibold">· {ausstehend} ausstehend</span>}
         </p>
       </div>
       <BewertungenAdminClient bewertungen={bewertungen} />

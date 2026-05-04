@@ -74,7 +74,7 @@ export function BewertungFormular() {
               <Star
                 className={`w-8 h-8 transition-colors ${
                   s <= (hoverSterne || sterne)
-                    ? "fill-[#E8621A] text-[#E8621A]"
+                    ? "fill-[#1f4a73] text-[#1f4a73]"
                     : "fill-gray-200 text-gray-200"
                 }`}
               />
@@ -118,7 +118,7 @@ export function BewertungFormular() {
         />
         <Label htmlFor="bew-datenschutz" className="text-xs text-gray-600 leading-relaxed cursor-pointer">
           Ich stimme der Veröffentlichung meiner Bewertung und der Verarbeitung meiner Daten gemäß der{" "}
-          <a href="/datenschutz" target="_blank" className="text-[#E8621A] hover:underline">
+          <a href="/datenschutz" target="_blank" className="text-[#1f4a73] hover:underline">
             Datenschutzerklärung
           </a>{" "}
           zu. <span className="text-red-500">*</span>
@@ -128,7 +128,7 @@ export function BewertungFormular() {
       <Button
         type="submit"
         disabled={loading || !datenschutz}
-        className="w-full bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors"
+        className="w-full bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 font-semibold transition-colors"
       >
         {loading ? "Wird gesendet…" : "Bewertung einreichen"}
       </Button>

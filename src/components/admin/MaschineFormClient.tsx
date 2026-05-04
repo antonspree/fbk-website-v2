@@ -205,7 +205,7 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
       {/* Hauptformular */}
       <form onSubmit={handleSubmit(onSubmit)} className="xl:col-span-2 space-y-5">
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h2 className="font-heading font-bold text-[#0F1F3D]">Grunddaten</h2>
+          <h2 className="font-heading font-bold text-[#6397cc]">Grunddaten</h2>
           <div>
             <Label htmlFor="titel">Titel <span className="text-red-500">*</span></Label>
             <Input id="titel" {...register("titel", { required: true })} className="mt-1" />
@@ -250,7 +250,7 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
 
         {/* Preis */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h2 className="font-heading font-bold text-[#0F1F3D]">Preis</h2>
+          <h2 className="font-heading font-bold text-[#6397cc]">Preis</h2>
           <div className="flex items-center gap-3">
             <Switch checked={preisAufAnfrage} onCheckedChange={setPreisAufAnfrage} id="paa" />
             <Label htmlFor="paa" className="cursor-pointer">Preis auf Anfrage</Label>
@@ -265,14 +265,14 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
 
         {/* Beschreibung */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h2 className="font-heading font-bold text-[#0F1F3D]">Beschreibung</h2>
+          <h2 className="font-heading font-bold text-[#6397cc]">Beschreibung</h2>
           <Textarea {...register("beschreibung")} rows={6} placeholder="Ausführliche Beschreibung der Maschine…" />
         </div>
 
         {/* Specs */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="font-heading font-bold text-[#0F1F3D]">Technische Daten</h2>
+            <h2 className="font-heading font-bold text-[#6397cc]">Technische Daten</h2>
             <Button
               type="button"
               size="sm"
@@ -310,7 +310,7 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
         </div>
 
         <div className="flex gap-3">
-          <Button type="submit" disabled={loading} className="bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors">
+          <Button type="submit" disabled={loading} className="bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 font-semibold transition-colors">
             {loading ? "Wird gespeichert…" : isEdit ? "Änderungen speichern" : "Maschine anlegen"}
           </Button>
           {isEdit && (
@@ -325,7 +325,7 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
       <div className="space-y-5">
         {/* Optionen */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h2 className="font-heading font-bold text-[#0F1F3D]">Optionen</h2>
+          <h2 className="font-heading font-bold text-[#6397cc]">Optionen</h2>
           <div className="flex items-center justify-between">
             <Label>Aktiv (sichtbar)</Label>
             <Switch checked={aktiv} onCheckedChange={setAktiv} />
@@ -338,7 +338,7 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
 
         {/* Bilder */}
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h2 className="font-heading font-bold text-[#0F1F3D]">Bilder</h2>
+          <h2 className="font-heading font-bold text-[#6397cc]">Bilder</h2>
           {!isEdit && (
             <p className="text-xs text-gray-400">Bilder können nach dem Anlegen der Maschine hochgeladen werden.</p>
           )}
@@ -355,7 +355,7 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
                         className="p-1.5 bg-white rounded-full"
                         title="Als Titelbild setzen"
                       >
-                        <Star className={`w-3.5 h-3.5 ${bild.ist_titelbild ? "fill-[#E8621A] text-[#E8621A]" : "text-gray-600"}`} />
+                        <Star className={`w-3.5 h-3.5 ${bild.ist_titelbild ? "fill-[#1f4a73] text-[#1f4a73]" : "text-gray-600"}`} />
                       </button>
                       <button
                         type="button"
@@ -367,15 +367,15 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
                       </button>
                     </div>
                     {bild.ist_titelbild && (
-                      <div className="absolute top-1 left-1 bg-[#E8621A] text-white text-[10px] px-1 rounded">
+                      <div className="absolute top-1 left-1 bg-[#1f4a73] text-white text-[10px] px-1 rounded">
                         Titelbild
                       </div>
                     )}
                   </div>
                 ))}
               </div>
-              <label className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-lg p-5 transition-colors ${uploadingImage ? "border-[#E8621A] bg-orange-50/30 cursor-wait" : "border-gray-200 cursor-pointer hover:border-[#E8621A] hover:bg-orange-50/30"}`}>
-                <ImagePlus className={`w-6 h-6 ${uploadingImage ? "text-[#E8621A] animate-pulse" : "text-gray-400"}`} />
+              <label className={`flex flex-col items-center justify-center gap-2 border-2 border-dashed rounded-lg p-5 transition-colors ${uploadingImage ? "border-[#1f4a73] bg-sky-50/70 cursor-wait" : "border-gray-200 cursor-pointer hover:border-[#1f4a73] hover:bg-sky-50/70"}`}>
+                <ImagePlus className={`w-6 h-6 ${uploadingImage ? "text-[#1f4a73] animate-pulse" : "text-gray-400"}`} />
                 <span className="text-xs text-gray-500 text-center leading-relaxed">
                   {uploadingImage
                     ? uploadProgress || "Wird verarbeitet…"

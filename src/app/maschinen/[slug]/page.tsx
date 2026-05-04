@@ -84,7 +84,7 @@ export default async function MaschineDetailPage({ params }: Props) {
       availability: "https://schema.org/InStock",
       seller: {
         "@type": "Organization",
-        name: "Firmenberatung Kassel e.K.",
+        name: "Firmenberatung Kassel Inh. Alfred Otto e.K.",
       },
     },
   };
@@ -98,7 +98,7 @@ export default async function MaschineDetailPage({ params }: Props) {
 
       <div className="bg-[#F5F5F5] min-h-screen">
         {/* Breadcrumb */}
-        <div className="bg-[#0F1F3D] py-4">
+        <div className="bg-[#6397cc] py-4">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2 text-white/50 text-xs">
               <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -126,7 +126,7 @@ export default async function MaschineDetailPage({ params }: Props) {
                       className={
                         maschine.zustand === "neu"
                           ? "bg-green-600 text-white border-0"
-                          : "bg-[#0F1F3D] text-white border-0"
+                          : "bg-[#6397cc] text-white border-0"
                       }
                     >
                       {maschine.zustand === "neu" ? "Neu" : "Gebraucht"}
@@ -138,7 +138,7 @@ export default async function MaschineDetailPage({ params }: Props) {
                     </Badge>
                   )}
                 </div>
-                <h1 className="font-heading text-3xl sm:text-4xl font-bold text-[#0F1F3D] leading-tight">
+                <h1 className="font-heading text-3xl sm:text-4xl font-bold text-[#6397cc] leading-tight">
                   {maschine.titel}
                 </h1>
               </div>
@@ -146,34 +146,34 @@ export default async function MaschineDetailPage({ params }: Props) {
               {/* Kerndaten */}
               <div className="bg-white rounded-lg p-5 border border-gray-200 grid grid-cols-2 gap-4">
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 text-[#E8621A] flex-shrink-0" />
+                  <Building2 className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
                   <div>
                     <p className="text-xs text-gray-500">Hersteller</p>
-                    <p className="font-semibold text-[#0F1F3D] text-sm">{maschine.hersteller}</p>
+                    <p className="font-semibold text-[#6397cc] text-sm">{maschine.hersteller}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#E8621A] flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
                   <div>
                     <p className="text-xs text-gray-500">Typ</p>
-                    <p className="font-semibold text-[#0F1F3D] text-sm">{maschine.typ}</p>
+                    <p className="font-semibold text-[#6397cc] text-sm">{maschine.typ}</p>
                   </div>
                 </div>
                 {maschine.baujahr && (
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-[#E8621A] flex-shrink-0" />
+                    <Calendar className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
                     <div>
                       <p className="text-xs text-gray-500">Baujahr</p>
-                      <p className="font-semibold text-[#0F1F3D] text-sm">{maschine.baujahr}</p>
+                      <p className="font-semibold text-[#6397cc] text-sm">{maschine.baujahr}</p>
                     </div>
                   </div>
                 )}
                 {maschine.zustand && (
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#E8621A] flex-shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
                     <div>
                       <p className="text-xs text-gray-500">Zustand</p>
-                      <p className="font-semibold text-[#0F1F3D] text-sm capitalize">{maschine.zustand}</p>
+                      <p className="font-semibold text-[#6397cc] text-sm capitalize">{maschine.zustand}</p>
                     </div>
                   </div>
                 )}
@@ -193,20 +193,20 @@ export default async function MaschineDetailPage({ params }: Props) {
               </div>
 
               {/* Kontakt */}
-              <div className="bg-[#0F1F3D] rounded-lg p-5 space-y-3">
+              <div className="bg-[#6397cc] rounded-lg p-5 space-y-3">
                 <p className="text-white font-semibold text-sm">Haben Sie Interesse?</p>
                 <a
                   href="tel:+4956057068"
                   className="flex items-center gap-3 text-white/80 hover:text-white text-sm transition-colors"
                 >
-                  <Phone className="w-4 h-4 text-[#E8621A]" />
+                  <Phone className="w-4 h-4 text-[#1f4a73]" />
                   <span>+49 (0) 5605 – 70686</span>
                 </a>
                 <a
                   href="mailto:info@firmenberatung-kassel.de"
                   className="flex items-center gap-3 text-white/80 hover:text-white text-sm transition-colors"
                 >
-                  <Mail className="w-4 h-4 text-[#E8621A]" />
+                  <Mail className="w-4 h-4 text-[#1f4a73]" />
                   <span>info@firmenberatung-kassel.de</span>
                 </a>
               </div>
@@ -218,7 +218,7 @@ export default async function MaschineDetailPage({ params }: Props) {
             <div className="lg:col-span-2 space-y-6">
               {maschine.beschreibung && (
                 <div className="bg-white rounded-lg p-6 border border-gray-200">
-                  <h2 className="font-heading text-xl font-bold text-[#0F1F3D] mb-4">Beschreibung</h2>
+                  <h2 className="font-heading text-xl font-bold text-[#6397cc] mb-4">Beschreibung</h2>
                   <div className="prose prose-sm max-w-none text-gray-700 leading-relaxed whitespace-pre-wrap">
                     {maschine.beschreibung}
                   </div>
@@ -227,7 +227,7 @@ export default async function MaschineDetailPage({ params }: Props) {
 
               {specs && Object.keys(specs).length > 0 && (
                 <div className="bg-white rounded-lg p-6 border border-gray-200">
-                  <h2 className="font-heading text-xl font-bold text-[#0F1F3D] mb-4">
+                  <h2 className="font-heading text-xl font-bold text-[#6397cc] mb-4">
                     Technische Spezifikationen
                   </h2>
                   <SpecsTabelle specs={specs} />
@@ -238,7 +238,7 @@ export default async function MaschineDetailPage({ params }: Props) {
             {/* Anfrage-Formular */}
             <div>
               <div className="bg-white rounded-lg p-6 border border-gray-200 sticky top-24">
-                <h2 className="font-heading text-xl font-bold text-[#0F1F3D] mb-1">
+                <h2 className="font-heading text-xl font-bold text-[#6397cc] mb-1">
                   Interesse an dieser Maschine?
                 </h2>
                 <p className="text-gray-500 text-sm mb-5">

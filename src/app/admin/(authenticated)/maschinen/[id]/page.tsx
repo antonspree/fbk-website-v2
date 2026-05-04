@@ -39,7 +39,7 @@ export default async function BearbeiteMaschineAdminPage({ params }: Props) {
           <ChevronRight className="w-3 h-3" />
           <span className="truncate max-w-xs">{maschine.titel}</span>
         </div>
-        <h1 className="font-heading text-3xl font-bold text-[#0F1F3D]">Maschine bearbeiten</h1>
+        <h1 className="font-heading text-3xl font-bold text-[#6397cc]">Maschine bearbeiten</h1>
       </div>
 
       <MaschineFormClient maschine={maschine} kategorien={kategorien} />

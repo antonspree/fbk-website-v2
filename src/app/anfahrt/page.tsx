@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function AnfahrtPage() {
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
+      <div className="bg-[#6397cc] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -41,7 +41,7 @@ export default function AnfahrtPage() {
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#6397cc]/60 to-transparent" />
           <div className="absolute bottom-4 left-6">
             <p className="text-white font-heading font-bold text-sm sm:text-lg leading-snug max-w-3xl">
               Zwei Lager: Hess. Lichtenau (Fa. Richter) &amp; Niestetal (Fa. Tomic) – Post: Kaufungen
@@ -53,12 +53,12 @@ export default function AnfahrtPage() {
           <div className="space-y-5">
             <div className="bg-white rounded-lg p-6 border border-gray-200 flex gap-5">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-full bg-[#E8621A]/10 flex items-center justify-center">
-                  <Car className="w-5 h-5 text-[#E8621A]" />
+                <div className="w-10 h-10 rounded-full bg-[#1f4a73]/10 flex items-center justify-center">
+                  <Car className="w-5 h-5 text-[#1f4a73]" />
                 </div>
               </div>
               <div>
-                <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">Mit dem Auto</h2>
+                <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Mit dem Auto</h2>
                 <p className="text-gray-700 text-sm leading-relaxed mb-3">
                   Unsere Maschinen stehen an <strong>zwei Lagerstandorten</strong> in der Region Kassel. Beide
                   Orte sind über die <strong>A7</strong> und landesweit gut angebunden. Bitte planen Sie Ihren
@@ -84,12 +84,12 @@ export default function AnfahrtPage() {
 
             <div className="bg-white rounded-lg p-6 border border-gray-200 flex gap-5">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-full bg-[#E8621A]/10 flex items-center justify-center">
-                  <Bus className="w-5 h-5 text-[#E8621A]" />
+                <div className="w-10 h-10 rounded-full bg-[#1f4a73]/10 flex items-center justify-center">
+                  <Bus className="w-5 h-5 text-[#1f4a73]" />
                 </div>
               </div>
               <div>
-                <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">
+                <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">
                   Mit öffentlichen Verkehrsmitteln
                 </h2>
                 <p className="text-gray-700 text-sm leading-relaxed">
@@ -104,12 +104,12 @@ export default function AnfahrtPage() {
 
             <div className="bg-white rounded-lg p-6 border border-gray-200 flex gap-5">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-full bg-[#E8621A]/10 flex items-center justify-center">
-                  <ParkingSquare className="w-5 h-5 text-[#E8621A]" />
+                <div className="w-10 h-10 rounded-full bg-[#1f4a73]/10 flex items-center justify-center">
+                  <ParkingSquare className="w-5 h-5 text-[#1f4a73]" />
                 </div>
               </div>
               <div>
-                <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">Parkplätze</h2>
+                <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Parkplätze</h2>
                 <p className="text-gray-700 text-sm leading-relaxed">
                   An beiden Lagerstandorten sind in der Regel Stell- und Ladeplätze vorhanden. Für
                   LKW, Tieflader und Transporter klären Sie die Zufahrt bitte vorab – wir helfen gern
@@ -118,19 +118,19 @@ export default function AnfahrtPage() {
               </div>
             </div>
 
-            <div className="bg-[#0F1F3D] rounded-lg p-6">
+            <div className="bg-[#6397cc] rounded-lg p-6">
               <p className="text-white font-semibold text-sm mb-2">Besuchen Sie uns nach Absprache</p>
               <p className="text-white/70 text-sm">
                 Bitte vereinbaren Sie Ihren Besuch vorab telefonisch. Wir freuen uns auf Sie!
               </p>
-              <a href="tel:+4956057068" className="mt-3 inline-block text-[#E8621A] font-semibold text-sm hover:text-orange-300 transition-colors">
+              <a href="tel:+4956057068" className="mt-3 inline-block text-[#1f4a73] font-semibold text-sm hover:text-sky-200 transition-colors">
                 +49 (0) 5605 – 70686
               </a>
             </div>
           </div>
 
           <div className="space-y-3">
-            <h2 className="font-heading font-bold text-lg text-[#0F1F3D]">Karten: Lager 1 &amp; Lager 2</h2>
+            <h2 className="font-heading font-bold text-lg text-[#6397cc]">Karten: Lager 1 &amp; Lager 2</h2>
             <LagerstandorteKarten />
           </div>
         </div>

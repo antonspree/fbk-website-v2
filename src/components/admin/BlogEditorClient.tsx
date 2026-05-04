@@ -149,7 +149,7 @@ export function BlogEditorClient({ post }: BlogEditorClientProps) {
         </div>
 
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
-          <h3 className="font-heading font-bold text-[#0F1F3D] text-sm">SEO</h3>
+          <h3 className="font-heading font-bold text-[#6397cc] text-sm">SEO</h3>
           <div>
             <Label htmlFor="seo_title">SEO-Titel</Label>
             <Input id="seo_title" {...register("seo_title")} className="mt-1 text-sm" placeholder="Seitentitel für Suchmaschinen" />
@@ -170,7 +170,7 @@ export function BlogEditorClient({ post }: BlogEditorClientProps) {
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#0F1F3D] hover:bg-[#E8621A] text-white border-0 font-semibold transition-colors"
+            className="w-full bg-[#6397cc] hover:bg-[#1f4a73] text-white border-0 font-semibold transition-colors"
           >
             {loading ? "Wird gespeichert…" : isEdit ? "Änderungen speichern" : "Artikel anlegen"}
           </Button>

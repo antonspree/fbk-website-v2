@@ -47,8 +47,8 @@ export function MaschineFilter({ kategorien, hideZustandFilter }: MaschineFilter
     <div className="bg-white border border-gray-200 rounded-lg p-5 space-y-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <SlidersHorizontal className="w-4 h-4 text-[#E8621A]" />
-          <span className="font-heading font-bold text-[#0F1F3D] text-sm uppercase tracking-wide">Filter</span>
+          <SlidersHorizontal className="w-4 h-4 text-[#1f4a73]" />
+          <span className="font-heading font-bold text-[#6397cc] text-sm uppercase tracking-wide">Filter</span>
         </div>
         {hasFilters && (
           <button

@@ -4,13 +4,14 @@ import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
-  description: "Datenschutzerklärung der Firmenberatung Kassel e.K. gemäß DSGVO.",
+  description:
+    "Datenschutzerklärung der Firmenberatung Kassel Inh. Alfred Otto e.K. gemäß DSGVO.",
 };
 
 export default function DatenschutzPage() {
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
+      <div className="bg-[#6397cc] py-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -24,7 +25,7 @@ export default function DatenschutzPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="bg-white rounded-lg p-8 border border-gray-200 space-y-7 text-sm text-gray-700 leading-relaxed">
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">1. Verantwortliche Stelle</h2>
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">1. Verantwortliche Stelle</h2>
             <p>
               Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br /><br />
               Firmenberatung Kassel Inh. Alfred Otto e.K.<br />
@@ -35,7 +36,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">
               2. Erhebung und Verarbeitung personenbezogener Daten
             </h2>
             <p>
@@ -52,7 +53,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">3. Kontaktformular</h2>
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">3. Kontaktformular</h2>
             <p>
               Wenn Sie uns über das Kontaktformular oder per E-Mail Anfragen zukommen lassen, werden
               Ihre Angaben (Name, E-Mail-Adresse, ggf. Telefon und Nachricht) zur Bearbeitung Ihrer
@@ -63,7 +64,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">4. Cookies</h2>
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">4. Cookies</h2>
             <p>
               Unsere Website verwendet ausschließlich technisch notwendige Cookies. Dies sind Cookies,
               die für den Betrieb der Website unbedingt erforderlich sind (z. B. für die Sitzungsverwaltung
@@ -73,7 +74,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">5. Google Maps</h2>
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">5. Google Maps</h2>
             <p>
               Auf dieser Website nutzen wir Google Maps (Google LLC, 1600 Amphitheatre Parkway,
               Mountain View, CA 94043, USA). Durch die Nutzung von Google Maps können Daten
@@ -83,7 +84,7 @@ export default function DatenschutzPage() {
                 href="https://policies.google.com/privacy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#E8621A] hover:underline"
+                className="text-[#1f4a73] hover:underline"
               >
                 Datenschutzerklärung von Google
               </a>
@@ -92,7 +93,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">6. Ihre Rechte</h2>
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">6. Ihre Rechte</h2>
             <p>Sie haben das Recht auf:</p>
             <ul className="list-disc list-inside mt-2 space-y-1">
               <li><strong>Auskunft</strong> über Ihre bei uns gespeicherten personenbezogenen Daten (Art. 15 DSGVO)</li>
@@ -104,7 +105,7 @@ export default function DatenschutzPage() {
             </ul>
             <p className="mt-3">
               Zur Ausübung Ihrer Rechte wenden Sie sich bitte an:{" "}
-              <a href="mailto:info@firmenberatung-kassel.de" className="text-[#E8621A] hover:underline">
+              <a href="mailto:info@firmenberatung-kassel.de" className="text-[#1f4a73] hover:underline">
                 info@firmenberatung-kassel.de
               </a>
             </p>
@@ -116,7 +117,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section>
-            <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-2">
+            <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">
               7. Speicherdauer
             </h2>
             <p>

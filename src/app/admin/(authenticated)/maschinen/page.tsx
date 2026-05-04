@@ -34,17 +34,17 @@ export default async function AdminMaschinenPage({ searchParams }: Props) {
     <div className="p-8">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="font-heading text-3xl font-bold text-[#0F1F3D]">Maschinen</h1>
+          <h1 className="font-heading text-3xl font-bold text-[#6397cc]">Maschinen</h1>
           <p className="text-gray-500 text-sm mt-1">{maschinen.length} Maschinen insgesamt</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <Button asChild variant="outline" className="border-[#0F1F3D] text-[#0F1F3D] hover:bg-gray-50 font-semibold">
+          <Button asChild variant="outline" className="border-[#6397cc] text-[#6397cc] hover:bg-gray-50 font-semibold">
             <Link href="/admin/maschinen/import">
               <Upload className="w-4 h-4 mr-2" />
               CSV-Import
             </Link>
           </Button>
-          <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+          <Button asChild className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
             <Link href="/admin/maschinen/neu">
               <Plus className="w-4 h-4 mr-2" />
               Neue Maschine
@@ -82,7 +82,7 @@ export default async function AdminMaschinenPage({ searchParams }: Props) {
               maschinen.map((m) => (
                 <tr key={m.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-4 py-3">
-                    <p className="font-medium text-[#0F1F3D]">{m.titel}</p>
+                    <p className="font-medium text-[#6397cc]">{m.titel}</p>
                     <p className="text-gray-500 text-xs">{m.hersteller} · {m.typ}{m.baujahr ? ` · Bj. ${m.baujahr}` : ""}</p>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
@@ -92,14 +92,14 @@ export default async function AdminMaschinenPage({ searchParams }: Props) {
                       </Badge>
                     )}
                   </td>
-                  <td className="px-4 py-3 hidden lg:table-cell font-medium text-[#E8621A]">
+                  <td className="px-4 py-3 hidden lg:table-cell font-medium text-[#1f4a73]">
                     {formatPreis(m.preis, m.preis_auf_anfrage)}
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-1.5">
                       <span className={`w-2 h-2 rounded-full ${m.aktiv ? "bg-green-500" : "bg-gray-300"}`} />
                       <span className="text-xs text-gray-600">{m.aktiv ? "Aktiv" : "Inaktiv"}</span>
-                      {m.featured && <Badge className="bg-[#E8621A]/10 text-[#E8621A] border-0 text-xs ml-1">Featured</Badge>}
+                      {m.featured && <Badge className="bg-[#1f4a73]/10 text-[#1f4a73] border-0 text-xs ml-1">Featured</Badge>}
                     </div>
                   </td>
                   <td className="px-4 py-3 text-right">
@@ -107,14 +107,14 @@ export default async function AdminMaschinenPage({ searchParams }: Props) {
                       <Link
                         href={`/maschinen/${m.slug}`}
                         target="_blank"
-                        className="text-gray-400 hover:text-[#0F1F3D] transition-colors"
+                        className="text-gray-400 hover:text-[#6397cc] transition-colors"
                         title="Ansehen"
                       >
                         <Eye className="w-4 h-4" />
                       </Link>
                       <Link
                         href={`/admin/maschinen/${m.id}`}
-                        className="text-gray-400 hover:text-[#E8621A] transition-colors"
+                        className="text-gray-400 hover:text-[#1f4a73] transition-colors"
                         title="Bearbeiten"
                       >
                         <Pencil className="w-4 h-4" />

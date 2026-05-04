@@ -13,6 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { SiteLogo } from "@/components/layout/SiteLogo";
 
 const navItems = [
   { href: "/admin/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -35,14 +36,11 @@ export function AdminSidebar() {
   }
 
   return (
-    <aside className="w-64 flex-shrink-0 bg-[#0F1F3D] min-h-screen flex flex-col">
+    <aside className="w-64 flex-shrink-0 bg-[#6397cc] min-h-screen flex flex-col">
       <div className="p-6 border-b border-white/10">
         <Link href="/" className="block">
-          <span className="font-heading text-white text-base font-bold leading-tight block">
-            FIRMENBERATUNG<br />
-            <span className="text-[#E8621A]">KASSEL</span>
-          </span>
-          <span className="text-white/40 text-xs mt-1 block">Admin-Bereich</span>
+          <SiteLogo variant="admin" priority={false} />
+          <span className="text-white/40 text-xs mt-2 block">Admin-Bereich</span>
         </Link>
       </div>
 
@@ -56,7 +54,7 @@ export function AdminSidebar() {
               href={item.href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors group ${
                 isActive
-                  ? "bg-[#E8621A] text-white"
+                  ? "bg-[#1f4a73] text-white"
                   : "text-white/70 hover:text-white hover:bg-white/10"
               }`}
             >

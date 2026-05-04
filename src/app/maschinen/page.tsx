@@ -127,7 +127,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
       {/* Header */}
-      <div className="relative bg-[#0F1F3D] py-14 overflow-hidden">
+      <div className="relative bg-[#6397cc] py-14 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1713371398485-7bde1bde9def?w=1600&auto=format&fit=crop&q=80"
           alt=""
@@ -136,7 +136,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#6397cc] via-[#6397cc]/90 to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -187,7 +187,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
                           href={buildPageUrl(p)}
                           className={`w-8 h-8 flex items-center justify-center rounded text-sm font-medium transition-colors ${
                             p === page
-                              ? "bg-[#0F1F3D] text-white"
+                              ? "bg-[#6397cc] text-white"
                               : "text-gray-600 hover:bg-gray-200"
                           }`}
                         >
@@ -216,7 +216,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
                   <Button asChild variant="outline">
                     <Link href="/maschinen">Filter zurücksetzen</Link>
                   </Button>
-                  <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0">
+                  <Button asChild className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0">
                     <Link href="/kontakt">Anfrage senden</Link>
                   </Button>
                 </div>
@@ -235,7 +235,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
           className="w-full object-cover h-48 sm:h-64"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#0F1F3D]/75 flex items-center justify-center">
+        <div className="absolute inset-0 bg-[#6397cc]/75 flex items-center justify-center">
           <div className="text-center px-4">
             <p className="text-white font-heading text-2xl sm:text-3xl font-bold mb-3">
               Nicht gefunden, was Sie suchen?
@@ -245,7 +245,7 @@ export default async function MaschinenPage({ searchParams }: MaschinenPageProps
             </p>
             <Link
               href="/kontakt"
-              className="inline-block bg-[#E8621A] hover:bg-[#d05518] text-white font-semibold px-6 py-2.5 rounded transition-colors text-sm"
+              className="inline-block bg-[#1f4a73] hover:bg-[#173a58] text-white font-semibold px-6 py-2.5 rounded transition-colors text-sm"
             >
               Suchanfrage stellen
             </Link>

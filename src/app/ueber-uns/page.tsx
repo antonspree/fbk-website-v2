@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
 
 export const metadata: Metadata = {
-  title: "Über uns – Firmenberatung Kassel e.K.",
+  title: "Über uns – Firmenberatung Kassel Inh. Alfred Otto e.K.",
   description:
     "Lernen Sie die Firmenberatung Kassel kennen. Über 20 Jahre Erfahrung im Handel mit Werkzeugmaschinen. Persönliche Beratung, fairer Handel, schnelle Abwicklung.",
 };
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function UeberUnsPage() {
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
+      <div className="bg-[#6397cc] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -23,7 +23,8 @@ export default function UeberUnsPage() {
           </div>
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white">Über uns</h1>
           <p className="text-white/60 mt-2 text-sm">
-            Firmenberatung Kassel e.K. – Seit über 20 Jahren Ihr Partner für Werkzeugmaschinen.
+            Firmenberatung Kassel Inh. Alfred Otto e.K. – Seit über 20 Jahren Ihr Partner für
+            Werkzeugmaschinen.
           </p>
         </div>
       </div>
@@ -40,18 +41,18 @@ export default function UeberUnsPage() {
                 sizes="(max-width: 1024px) 100vw, 66vw"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F1F3D]/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#6397cc]/60 to-transparent" />
               <div className="absolute bottom-4 left-5">
                 <span className="text-white font-heading font-bold text-lg">Unsere Lager in der Region Kassel</span>
               </div>
             </div>
 
             <div className="bg-white rounded-lg p-7 border border-gray-200">
-              <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">Wer wir sind</h2>
+              <h2 className="font-heading text-2xl font-bold text-[#6397cc] mb-4">Wer wir sind</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
-                Die Firmenberatung Kassel e.K. ist ein auf Werkzeugmaschinen spezialisiertes
-                Handelsunternehmen mit Sitz in Kaufungen bei Kassel. Gegründet von Alfred Otto,
-                ist das Unternehmen seit über zwei Jahrzehnten verlässlicher Partner für Industrie-
+                Die Firmenberatung Kassel Inh. Alfred Otto e.K. ist ein auf Werkzeugmaschinen
+                spezialisiertes Handelsunternehmen mit Sitz in Kaufungen bei Kassel. Gegründet von
+                Alfred Otto, ist das Unternehmen seit über zwei Jahrzehnten verlässlicher Partner für Industrie-
                 und Handwerksbetriebe in ganz Deutschland und Europa.
               </p>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -63,7 +64,7 @@ export default function UeberUnsPage() {
             </div>
 
             <div className="bg-white rounded-lg p-7 border border-gray-200">
-              <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">Was wir tun</h2>
+              <h2 className="font-heading text-2xl font-bold text-[#6397cc] mb-4">Was wir tun</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
                 Wir handeln mit neuen und gebrauchten Werkzeugmaschinen aller Art: Drehmaschinen,
                 Fräsmaschinen, Bearbeitungszentren, Schleifmaschinen, Sägen, Pressen und vieles mehr.
@@ -76,7 +77,7 @@ export default function UeberUnsPage() {
               </p>
             </div>
 
-            <div className="bg-[#0F1F3D] rounded-lg p-7">
+            <div className="bg-[#6397cc] rounded-lg p-7">
               <h2 className="font-heading text-2xl font-bold text-white mb-4">Unsere Philosophie</h2>
               <p className="text-white/80 text-sm leading-relaxed mb-3">
                 Ehrlicher Handel, persönliche Beratung und faire Preise – das sind die Grundsätze,
@@ -90,7 +91,7 @@ export default function UeberUnsPage() {
             </div>
 
             <div className="bg-white rounded-lg p-7 border border-gray-200">
-              <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-4">Unsere Standorte</h2>
+              <h2 className="font-heading text-2xl font-bold text-[#6397cc] mb-4">Unsere Standorte</h2>
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
                 Wir unterhalten <strong>zwei Lager</strong> mit jeweils eigenem Standort:{" "}
                 <strong>Hess. Lichtenau</strong> (Kooperation Fa. Richter) und{" "}
@@ -98,7 +99,7 @@ export default function UeberUnsPage() {
                 bleibt {firmenadresseZeilen[2]}. Beide Lager sind über die A7 und für Kunden aus dem
                 gesamten nordhessischen Raum gut erreichbar.
               </p>
-              <Button asChild variant="outline" className="border-[#0F1F3D] text-[#0F1F3D] hover:bg-[#0F1F3D] hover:text-white">
+              <Button asChild variant="outline" className="border-[#6397cc] text-[#6397cc] hover:bg-[#6397cc] hover:text-white">
                 <Link href="/anfahrt">Anfahrtsbeschreibung</Link>
               </Button>
             </div>
@@ -117,20 +118,20 @@ export default function UeberUnsPage() {
             </div>
 
             <div className="bg-white rounded-lg p-6 border border-gray-200">
-              <h3 className="font-heading font-bold text-[#0F1F3D] text-lg mb-4">
+              <h3 className="font-heading font-bold text-[#6397cc] text-lg mb-4">
                 Kontakt aufnehmen
               </h3>
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
-                  <MapPin className="w-4 h-4 text-[#E8621A] flex-shrink-0 mt-0.5" />
+                  <MapPin className="w-4 h-4 text-[#1f4a73] flex-shrink-0 mt-0.5" />
                   <div className="not-italic text-gray-700 leading-relaxed text-sm">
-                    <p className="font-medium text-[#0F1F3D]">Postanschrift</p>
+                    <p className="font-medium text-[#6397cc]">Postanschrift</p>
                     {firmenadresseZeilen[0]}
                     <br />
                     {firmenadresseZeilen[1]}
                     <br />
                     {firmenadresseZeilen[2]}
-                    <p className="font-medium text-[#0F1F3D] mt-3">Lager</p>
+                    <p className="font-medium text-[#6397cc] mt-3">Lager</p>
                     <ul className="mt-1 space-y-1.5">
                       {lagerstandorte.map((l) => (
                         <li key={l.id}>
@@ -140,31 +141,31 @@ export default function UeberUnsPage() {
                     </ul>
                   </div>
                 </div>
-                <a href="tel:+4956057068" className="flex items-center gap-3 text-gray-700 hover:text-[#E8621A] transition-colors">
-                  <Phone className="w-4 h-4 text-[#E8621A]" />
+                <a href="tel:+4956057068" className="flex items-center gap-3 text-gray-700 hover:text-[#1f4a73] transition-colors">
+                  <Phone className="w-4 h-4 text-[#1f4a73]" />
                   +49 (0) 5605 – 70686
                 </a>
-                <a href="mailto:info@firmenberatung-kassel.de" className="flex items-center gap-3 text-gray-700 hover:text-[#E8621A] transition-colors">
-                  <Mail className="w-4 h-4 text-[#E8621A]" />
+                <a href="mailto:info@firmenberatung-kassel.de" className="flex items-center gap-3 text-gray-700 hover:text-[#1f4a73] transition-colors">
+                  <Mail className="w-4 h-4 text-[#1f4a73]" />
                   info@firmenberatung-kassel.de
                 </a>
               </div>
-              <Button asChild className="w-full mt-5 bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+              <Button asChild className="w-full mt-5 bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
                 <Link href="/kontakt">Nachricht senden</Link>
               </Button>
             </div>
 
             <div className="bg-[#F5F5F5] border border-gray-200 rounded-lg p-6 space-y-4">
               <div className="text-center">
-                <span className="font-heading text-4xl font-bold text-[#E8621A]">20+</span>
+                <span className="font-heading text-4xl font-bold text-[#1f4a73]">20+</span>
                 <p className="text-gray-600 text-sm mt-1">Jahre Erfahrung</p>
               </div>
               <div className="text-center">
-                <span className="font-heading text-4xl font-bold text-[#E8621A]">100+</span>
+                <span className="font-heading text-4xl font-bold text-[#1f4a73]">100+</span>
                 <p className="text-gray-600 text-sm mt-1">Maschinen im Lager</p>
               </div>
               <div className="text-center">
-                <span className="font-heading text-4xl font-bold text-[#E8621A]">DE/EU</span>
+                <span className="font-heading text-4xl font-bold text-[#1f4a73]">DE/EU</span>
                 <p className="text-gray-600 text-sm mt-1">Lieferung möglich</p>
               </div>
             </div>

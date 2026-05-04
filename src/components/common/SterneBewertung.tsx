@@ -24,7 +24,7 @@ export function SterneBewertung({
           className={cn(
             iconSize,
             i < bewertung
-              ? "fill-[#E8621A] text-[#E8621A]"
+              ? "fill-[#1f4a73] text-[#1f4a73]"
               : "fill-gray-200 text-gray-200"
           )}
         />

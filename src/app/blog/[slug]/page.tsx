@@ -80,7 +80,7 @@ export default async function BlogDetailPage({ params }: Props) {
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
       {/* Header */}
-      <div className="bg-[#0F1F3D] py-10">
+      <div className="bg-[#6397cc] py-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -91,7 +91,7 @@ export default async function BlogDetailPage({ params }: Props) {
           </div>
           <div className="flex items-center gap-3 mb-4">
             {post.kategorie && (
-              <Badge className="bg-[#E8621A] text-white border-0 text-xs">{post.kategorie}</Badge>
+              <Badge className="bg-[#1f4a73] text-white border-0 text-xs">{post.kategorie}</Badge>
             )}
             <div className="flex items-center gap-1 text-white/50 text-xs">
               <Calendar className="w-3 h-3" />
@@ -122,10 +122,10 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* Artikel-Inhalt */}
         <div className="bg-white rounded-lg p-7 sm:p-10 border border-gray-200 shadow-sm">
           <div className="prose prose-gray max-w-none
-            prose-headings:font-heading prose-headings:text-[#0F1F3D]
+            prose-headings:font-heading prose-headings:text-[#6397cc]
             prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl
-            prose-a:text-[#E8621A] prose-a:no-underline hover:prose-a:underline
-            prose-strong:text-[#0F1F3D]
+            prose-a:text-[#1f4a73] prose-a:no-underline hover:prose-a:underline
+            prose-strong:text-[#6397cc]
             prose-li:text-gray-700
             prose-p:text-gray-700 prose-p:leading-relaxed
             prose-hr:border-gray-200
@@ -137,7 +137,7 @@ export default async function BlogDetailPage({ params }: Props) {
         </div>
 
         {/* CTA */}
-        <div className="bg-[#0F1F3D] rounded-lg p-7 mt-8 text-center">
+        <div className="bg-[#6397cc] rounded-lg p-7 mt-8 text-center">
           <p className="text-white font-semibold text-lg mb-2">
             Haben Sie Fragen oder suchen Sie eine bestimmte Maschine?
           </p>
@@ -145,7 +145,7 @@ export default async function BlogDetailPage({ params }: Props) {
             Wir beraten Sie gerne persönlich und unverbindlich.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold">
+            <Button asChild className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
               <Link href="/maschinen">Maschinen ansehen</Link>
             </Button>
             <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 bg-transparent">
@@ -167,7 +167,7 @@ export default async function BlogDetailPage({ params }: Props) {
         {/* Verwandte Artikel */}
         {related.length > 0 && (
           <div className="mt-12">
-            <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-6">
+            <h2 className="font-heading text-2xl font-bold text-[#6397cc] mb-6">
               Weitere Artikel
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -175,13 +175,13 @@ export default async function BlogDetailPage({ params }: Props) {
                 <Link
                   key={p.id}
                   href={`/blog/${p.slug}`}
-                  className="group bg-white rounded-lg border border-gray-200 p-5 hover:border-[#E8621A]/30 hover:shadow-md transition-all"
+                  className="group bg-white rounded-lg border border-gray-200 p-5 hover:border-[#1f4a73]/30 hover:shadow-md transition-all"
                 >
-                  <p className="font-heading font-bold text-[#0F1F3D] text-base leading-tight group-hover:text-[#E8621A] transition-colors mb-2">
+                  <p className="font-heading font-bold text-[#6397cc] text-base leading-tight group-hover:text-[#1f4a73] transition-colors mb-2">
                     {p.titel}
                   </p>
                   <p className="text-gray-500 text-xs line-clamp-2">{p.teaser}</p>
-                  <div className="flex items-center gap-1 text-[#E8621A] text-xs font-semibold mt-3">
+                  <div className="flex items-center gap-1 text-[#1f4a73] text-xs font-semibold mt-3">
                     Lesen <ArrowRight className="w-3 h-3" />
                   </div>
                 </Link>

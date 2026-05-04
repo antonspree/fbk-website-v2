@@ -31,7 +31,7 @@ export default async function BewertungenPage() {
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
+      <div className="bg-[#6397cc] py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -47,7 +47,7 @@ export default async function BewertungenPage() {
           </p>
           {avg && (
             <div className="mt-4 flex items-center gap-2">
-              <span className="text-[#E8621A] font-heading font-bold text-2xl">{avg}</span>
+              <span className="text-[#1f4a73] font-heading font-bold text-2xl">{avg}</span>
               <span className="text-white/60 text-sm">/ 5 aus {bewertungen.length} Bewertungen</span>
             </div>
           )}
@@ -77,9 +77,9 @@ export default async function BewertungenPage() {
             className="w-full object-cover h-44 sm:h-56"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-[#0F1F3D]/70 flex items-center justify-center">
+          <div className="absolute inset-0 bg-[#6397cc]/70 flex items-center justify-center">
             <div className="text-center px-6">
-              <p className="text-[#E8621A] font-heading font-bold text-sm uppercase tracking-widest mb-2">Seit über 20 Jahren</p>
+              <p className="text-[#1f4a73] font-heading font-bold text-sm uppercase tracking-widest mb-2">Seit über 20 Jahren</p>
               <p className="text-white font-heading font-bold text-2xl sm:text-3xl">
                 Zufriedene Kunden – unser größter Antrieb
               </p>
@@ -89,7 +89,7 @@ export default async function BewertungenPage() {
 
         {/* Formular */}
         <div className="max-w-lg mx-auto bg-white rounded-lg p-8 border border-gray-200 shadow-sm">
-          <h2 className="font-heading text-2xl font-bold text-[#0F1F3D] mb-2">
+          <h2 className="font-heading text-2xl font-bold text-[#6397cc] mb-2">
             Eigene Bewertung abgeben
           </h2>
           <p className="text-gray-500 text-sm mb-6">

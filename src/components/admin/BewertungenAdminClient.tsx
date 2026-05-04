@@ -43,10 +43,10 @@ export function BewertungenAdminClient({ bewertungen }: Props) {
             <div className="flex items-center gap-3 mb-2">
               <div className="flex gap-0.5">
                 {[1,2,3,4,5].map(s => (
-                  <Star key={s} className={`w-4 h-4 ${s <= b.bewertung ? "fill-[#E8621A] text-[#E8621A]" : "fill-gray-200 text-gray-200"}`} />
+                  <Star key={s} className={`w-4 h-4 ${s <= b.bewertung ? "fill-[#1f4a73] text-[#1f4a73]" : "fill-gray-200 text-gray-200"}`} />
                 ))}
               </div>
-              <span className="font-semibold text-[#0F1F3D] text-sm">{b.name}</span>
+              <span className="font-semibold text-[#6397cc] text-sm">{b.name}</span>
               <span className="text-xs text-gray-400">{formatDatum(b.created_at)}</span>
               {!b.freigegeben && (
                 <span className="text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium">

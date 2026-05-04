@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
+import { SiteLogo } from "@/components/layout/SiteLogo";
 
 const footerLinks = {
   maschinen: [
@@ -28,16 +29,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0F1F3D] text-white mt-auto">
+    <footer className="bg-[#6397cc] text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Firmendaten */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-4">
-              <span className="font-heading text-xl font-bold tracking-wide leading-tight">
-                FIRMENBERATUNG<br />
-                <span className="text-[#E8621A]">KASSEL</span>
-              </span>
+              <SiteLogo variant="footer" priority={false} />
             </Link>
             <p className="text-white/60 text-sm mb-5 leading-relaxed">
               Ihr zuverlässiger Partner für neue und gebrauchte Werkzeugmaschinen –
@@ -45,7 +43,7 @@ export function Footer() {
             </p>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-[#E8621A] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#1f4a73] flex-shrink-0 mt-0.5" />
                 <div className="not-italic text-white/70 text-sm leading-relaxed">
                   <p className="text-white/50 text-xs font-semibold uppercase tracking-wide mb-1.5">Firmenadresse</p>
                   <address className="not-italic">
@@ -59,7 +57,7 @@ export function Footer() {
                 </div>
               </div>
               <div className="flex items-start gap-3 pl-0">
-                <MapPin className="w-4 h-4 text-[#E8621A] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#1f4a73] flex-shrink-0 mt-0.5" />
                 <div className="not-italic text-white/70 text-sm leading-relaxed">
                   <p className="text-white/50 text-xs font-semibold uppercase tracking-wide mb-2">Lager</p>
                   <ul className="space-y-3">
@@ -80,14 +78,14 @@ export function Footer() {
                 href="tel:+4956057068"
                 className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors group"
               >
-                <Phone className="w-4 h-4 text-[#E8621A] flex-shrink-0" />
+                <Phone className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
                 <span>+49 (0) 5605 – 70686</span>
               </a>
               <a
                 href="mailto:info@firmenberatung-kassel.de"
                 className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors group"
               >
-                <Mail className="w-4 h-4 text-[#E8621A] flex-shrink-0" />
+                <Mail className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
                 <span>info@firmenberatung-kassel.de</span>
               </a>
             </div>

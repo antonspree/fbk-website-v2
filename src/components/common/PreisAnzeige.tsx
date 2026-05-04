@@ -26,7 +26,7 @@ export function PreisAnzeige({
         size === "lg" && "text-3xl",
         isAnfrage
           ? "text-gray-500 font-semibold text-base"
-          : "text-[#E8621A]",
+          : "text-[#1f4a73]",
         className
       )}
     >

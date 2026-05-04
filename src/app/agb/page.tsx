@@ -4,7 +4,8 @@ import { ChevronRight } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Allgemeine Geschäftsbedingungen (AGB)",
-  description: "AGB der Firmenberatung Kassel e.K. für den Handel mit Werkzeugmaschinen.",
+  description:
+    "AGB der Firmenberatung Kassel Inh. Alfred Otto e.K. für den Handel mit Werkzeugmaschinen.",
 };
 
 const paragraphen = [
@@ -80,7 +81,7 @@ const paragraphen = [
 export default function AGBPage() {
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="bg-[#0F1F3D] py-10">
+      <div className="bg-[#6397cc] py-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -100,7 +101,7 @@ export default function AGBPage() {
         <div className="bg-white rounded-lg p-8 border border-gray-200 space-y-8 text-sm text-gray-700 leading-relaxed">
           {paragraphen.map((p) => (
             <section key={p.nr}>
-              <h2 className="font-heading font-bold text-[#0F1F3D] text-lg mb-3">
+              <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-3">
                 {p.nr} {p.titel}
               </h2>
               {p.text.map((absatz, i) => (
@@ -110,7 +111,8 @@ export default function AGBPage() {
           ))}
 
           <p className="text-gray-400 text-xs pt-4 border-t border-gray-100">
-            Stand: {new Date().getFullYear()} – Firmenberatung Kassel e.K.
+            Stand: {new Date().getFullYear()} – Firmenberatung Kassel
+Inh. Alfred Otto e.K.
           </p>
         </div>
       </div>

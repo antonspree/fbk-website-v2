@@ -134,7 +134,7 @@ export function AnfrageFormular({ maschineId, maschineTitel }: AnfrageFormularPr
         />
         <Label htmlFor="datenschutz" className="text-xs text-gray-600 leading-relaxed cursor-pointer">
           Ich stimme der Verarbeitung meiner Daten gemäß der{" "}
-          <a href="/datenschutz" target="_blank" className="text-[#E8621A] hover:underline">
+          <a href="/datenschutz" target="_blank" className="text-[#1f4a73] hover:underline">
             Datenschutzerklärung
           </a>{" "}
           zu. <span className="text-red-500">*</span>
@@ -145,7 +145,7 @@ export function AnfrageFormular({ maschineId, maschineTitel }: AnfrageFormularPr
       <Button
         type="submit"
         disabled={loading || !datenschutz}
-        className="w-full bg-[#E8621A] hover:bg-[#d05518] text-white border-0 font-semibold"
+        className="w-full bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold"
       >
         {loading ? "Wird gesendet…" : "Anfrage senden"}
       </Button>

@@ -95,7 +95,7 @@ export default async function NeueMaschinenPage({ searchParams }: NeueMaschinenP
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen">
-      <div className="relative bg-[#0F1F3D] py-14 overflow-hidden">
+      <div className="relative bg-[#6397cc] py-14 overflow-hidden">
         <Image
           src="https://images.unsplash.com/photo-1740209475472-aa7d280f7452?w=1600&auto=format&fit=crop&q=80"
           alt=""
@@ -104,7 +104,7 @@ export default async function NeueMaschinenPage({ searchParams }: NeueMaschinenP
           sizes="100vw"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0F1F3D] via-[#0F1F3D]/90 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#6397cc] via-[#6397cc]/90 to-transparent" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 text-white/50 text-xs mb-3">
             <Link href="/" className="hover:text-white transition-colors">Startseite</Link>
@@ -147,7 +147,7 @@ export default async function NeueMaschinenPage({ searchParams }: NeueMaschinenP
                       <Link
                         key={p}
                         href={buildPageUrl(p)}
-                        className={`w-8 h-8 flex items-center justify-center rounded text-sm font-medium transition-colors ${p === page ? "bg-[#0F1F3D] text-white" : "text-gray-600 hover:bg-gray-200"}`}
+                        className={`w-8 h-8 flex items-center justify-center rounded text-sm font-medium transition-colors ${p === page ? "bg-[#6397cc] text-white" : "text-gray-600 hover:bg-gray-200"}`}
                       >{p}</Link>
                     ))}
                     {page < totalPages && (
@@ -161,7 +161,7 @@ export default async function NeueMaschinenPage({ searchParams }: NeueMaschinenP
             ) : (
               <div className="bg-white rounded-lg p-12 text-center border border-gray-200">
                 <p className="text-gray-500 text-lg mb-4">Derzeit keine neuen Maschinen verfügbar.</p>
-                <Button asChild className="bg-[#E8621A] hover:bg-[#d05518] text-white border-0">
+                <Button asChild className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0">
                   <Link href="/kontakt">Anfrage stellen</Link>
                 </Button>
               </div>

@@ -49,8 +49,8 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 
   /* FBK Brand Colors */
-  --color-brand-primary: #0F1F3D;
-  --color-brand-accent: #E8621A;
+  --color-brand-primary: #6397cc;
+  --color-brand-accent: #1f4a73;
   --color-brand-neutral-light: #F5F5F5;
   --color-brand-neutral-dark: #1A1A1A;
 }
@@ -62,32 +62,32 @@
   --card-foreground: #1A1A1A;
   --popover: #ffffff;
   --popover-foreground: #1A1A1A;
-  --primary: #0F1F3D;
+  --primary: #6397cc;
   --primary-foreground: #ffffff;
   --secondary: #F5F5F5;
-  --secondary-foreground: #0F1F3D;
+  --secondary-foreground: #6397cc;
   --muted: #F5F5F5;
   --muted-foreground: #6B7280;
-  --accent: #E8621A;
+  --accent: #1f4a73;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #E5E7EB;
   --input: #E5E7EB;
-  --ring: #0F1F3D;
+  --ring: #6397cc;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
   --chart-5: oklch(0.269 0 0);
   --radius: 0.5rem;
-  --sidebar: #0F1F3D;
+  --sidebar: #6397cc;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #E8621A;
+  --sidebar-primary: #1f4a73;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1a2f52;
+  --sidebar-accent: #45709a;
   --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #1a2f52;
-  --sidebar-ring: #E8621A;
+  --sidebar-border: #45709a;
+  --sidebar-ring: #1f4a73;
 }
 
 @layer base {

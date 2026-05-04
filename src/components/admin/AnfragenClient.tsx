@@ -47,13 +47,13 @@ export function AnfragenClient({ anfragen }: Props) {
             <div
               key={a.id}
               onClick={() => { setSelected(a); if (!a.gelesen) handleGelesen(a.id, true); }}
-              className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${selected?.id === a.id ? "bg-blue-50/50 border-l-2 border-[#E8621A]" : ""} ${!a.gelesen ? "bg-orange-50/30" : ""}`}
+              className={`p-4 cursor-pointer hover:bg-gray-50 transition-colors ${selected?.id === a.id ? "bg-blue-50/50 border-l-2 border-[#1f4a73]" : ""} ${!a.gelesen ? "bg-sky-50/60" : ""}`}
             >
               <div className="flex items-start justify-between gap-2">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2">
-                    {!a.gelesen && <span className="w-2 h-2 rounded-full bg-[#E8621A] flex-shrink-0" />}
-                    <p className="font-medium text-[#0F1F3D] text-sm truncate">{a.name}</p>
+                    {!a.gelesen && <span className="w-2 h-2 rounded-full bg-[#1f4a73] flex-shrink-0" />}
+                    <p className="font-medium text-[#6397cc] text-sm truncate">{a.name}</p>
                     {a.typ && (
                       <span className="text-xs bg-gray-100 text-gray-600 px-1.5 py-0.5 rounded flex-shrink-0">
                         {typLabels[a.typ] ?? a.typ}
@@ -74,7 +74,7 @@ export function AnfragenClient({ anfragen }: Props) {
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4">
           <div className="flex items-start justify-between">
             <div>
-              <h2 className="font-heading font-bold text-[#0F1F3D] text-lg">{selected.name}</h2>
+              <h2 className="font-heading font-bold text-[#6397cc] text-lg">{selected.name}</h2>
               <p className="text-gray-500 text-xs">{formatDatum(selected.created_at)}</p>
             </div>
             <div className="flex items-center gap-2">
@@ -96,13 +96,13 @@ export function AnfragenClient({ anfragen }: Props) {
 
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm">
-              <Mail className="w-4 h-4 text-[#E8621A]" />
-              <a href={`mailto:${selected.email}`} className="text-[#E8621A] hover:underline">{selected.email}</a>
+              <Mail className="w-4 h-4 text-[#1f4a73]" />
+              <a href={`mailto:${selected.email}`} className="text-[#1f4a73] hover:underline">{selected.email}</a>
             </div>
             {selected.telefon && (
               <div className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-[#E8621A]" />
-                <a href={`tel:${selected.telefon}`} className="text-[#E8621A] hover:underline">{selected.telefon}</a>
+                <Phone className="w-4 h-4 text-[#1f4a73]" />
+                <a href={`tel:${selected.telefon}`} className="text-[#1f4a73] hover:underline">{selected.telefon}</a>
               </div>
             )}
             {selected.typ && (
@@ -116,7 +116,7 @@ export function AnfragenClient({ anfragen }: Props) {
           {selected.betreff && (
             <div className="border-t border-gray-100 pt-3">
               <p className="text-xs text-gray-400 mb-1">Betreff</p>
-              <p className="font-medium text-[#0F1F3D] text-sm">{selected.betreff}</p>
+              <p className="font-medium text-[#6397cc] text-sm">{selected.betreff}</p>
             </div>
           )}
 
@@ -130,7 +130,7 @@ export function AnfragenClient({ anfragen }: Props) {
           <div className="flex gap-2 pt-2">
             <a
               href={`mailto:${selected.email}?subject=Re: ${selected.betreff ?? "Ihre Anfrage"}`}
-              className="flex-1 text-center py-2 bg-[#0F1F3D] text-white text-sm font-semibold rounded-lg hover:bg-[#E8621A] transition-colors"
+              className="flex-1 text-center py-2 bg-[#6397cc] text-white text-sm font-semibold rounded-lg hover:bg-[#1f4a73] transition-colors"
             >
               Antworten
             </a>
