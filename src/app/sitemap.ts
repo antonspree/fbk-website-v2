@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicSupabaseClient } from "@/lib/supabase/public";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.firmenberatung-kassel.de";
 
@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    const supabase = await createClient();
+    const supabase = createPublicSupabaseClient();
 
     const [{ data: maschinen }, { data: blogPosts }] = await Promise.all([
       supabase.from("maschinen").select("slug, created_at").eq("aktiv", true),

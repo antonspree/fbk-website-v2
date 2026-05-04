@@ -7,7 +7,7 @@ import { MaschineGalerie } from "@/components/maschinen/MaschineGalerie";
 import { SpecsTabelle } from "@/components/maschinen/SpecsTabelle";
 import { AnfrageFormular } from "@/components/forms/AnfrageFormular";
 import { PreisAnzeige } from "@/components/common/PreisAnzeige";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import type { MaschineWithKategorie } from "@/lib/types";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 }
 
 async function getMaschine(slug: string): Promise<MaschineWithKategorie | null> {
-  const supabase = await createClient();
+  const supabase = createPublicSupabaseClient();
   const { data } = await supabase
     .from("maschinen")
     .select("*, kategorien(*), maschinen_bilder(*)")

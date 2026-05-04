@@ -7,7 +7,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/server";
+import { createPublicSupabaseClient } from "@/lib/supabase/public";
 import type { BlogPost } from "@/lib/types";
 import { formatDatum } from "@/lib/utils";
 
@@ -16,7 +16,7 @@ interface Props {
 }
 
 async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const supabase = await createClient();
+  const supabase = createPublicSupabaseClient();
   const { data } = await supabase
     .from("blog_posts")
     .select("*")
@@ -27,7 +27,7 @@ async function getBlogPost(slug: string): Promise<BlogPost | null> {
 }
 
 async function getRelatedPosts(currentSlug: string, kategorie: string | null): Promise<BlogPost[]> {
-  const supabase = await createClient();
+  const supabase = createPublicSupabaseClient();
   let query = supabase
     .from("blog_posts")
     .select("*")
