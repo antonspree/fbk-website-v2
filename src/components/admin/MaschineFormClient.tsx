@@ -9,12 +9,21 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { createMaschine, updateMaschine, deleteMaschine, saveMaschineBildMetadata, deleteMaschineBild } from "@/app/actions/maschinen";
 import { createClient } from "@/lib/supabase/client";
 import { compressImage } from "@/lib/imageCompression";
 import type { Kategorie, MaschineWithKategorie, MaschineBild } from "@/lib/types";
+import { partitionKategorienHierarchie } from "@/lib/kategorienTree";
 import Image from "next/image";
 
 interface FormData {
@@ -40,6 +49,7 @@ interface SpecEntry {
 export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientProps) {
   const router = useRouter();
   const isEdit = !!maschine;
+  const { roots, childrenByParent } = partitionKategorienHierarchie(kategorien);
 
   const [kategorieId, setKategorieId] = useState(maschine?.kategorie_id ?? "");
   const [zustand, setZustand] = useState<"neu" | "gebraucht">(maschine?.zustand ?? "gebraucht");
@@ -238,11 +248,27 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
           </div>
           <div>
             <Label>Kategorie</Label>
-            <Select value={kategorieId} onValueChange={(v) => setKategorieId(v ?? "")}>
+            <Select
+              value={kategorieId || "__none__"}
+              onValueChange={(v) => setKategorieId(v === "__none__" || v == null ? "" : v)}
+            >
               <SelectTrigger className="mt-1"><SelectValue placeholder="Keine Kategorie" /></SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Keine Kategorie</SelectItem>
-                {kategorien.map(k => <SelectItem key={k.id} value={k.id}>{k.name}</SelectItem>)}
+                <SelectItem value="__none__">Keine Kategorie</SelectItem>
+                {roots.map((parent) => {
+                  const subs = childrenByParent.get(parent.id) ?? [];
+                  return (
+                    <SelectGroup key={parent.id}>
+                      <SelectLabel>{parent.name}</SelectLabel>
+                      <SelectItem value={parent.id}>{subs.length ? `${parent.name} (allgemein)` : parent.name}</SelectItem>
+                      {subs.map((sub) => (
+                        <SelectItem key={sub.id} value={sub.id}>
+                          {sub.name}
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  );
+                })}
               </SelectContent>
             </Select>
           </div>

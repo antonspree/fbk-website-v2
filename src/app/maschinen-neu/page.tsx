@@ -72,7 +72,7 @@ async function getNeueMaschinen(searchParams: SearchParams) {
 
 async function getKategorien(): Promise<Kategorie[]> {
   const supabase = await createClient();
-  const { data } = await supabase.from("kategorien").select("*").is("parent_id", null).order("name");
+  const { data } = await supabase.from("kategorien").select("*").order("name");
   return data ?? [];
 }
 

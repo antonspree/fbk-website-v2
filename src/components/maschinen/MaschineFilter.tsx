@@ -5,8 +5,17 @@ import { useCallback, useTransition } from "react";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import type { Kategorie } from "@/lib/types";
+import { partitionKategorienHierarchie } from "@/lib/kategorienTree";
 
 interface MaschineFilterProps {
   kategorien: Kategorie[];
@@ -18,6 +27,7 @@ export function MaschineFilter({ kategorien, hideZustandFilter }: MaschineFilter
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [, startTransition] = useTransition();
+  const { roots, childrenByParent } = partitionKategorienHierarchie(kategorien);
 
   const updateParam = useCallback(
     (key: string, value: string | null) => {
@@ -96,11 +106,20 @@ export function MaschineFilter({ kategorien, hideZustandFilter }: MaschineFilter
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="alle">Alle Kategorien</SelectItem>
-            {kategorien.map((k) => (
-              <SelectItem key={k.id} value={k.slug}>
-                {k.name}
-              </SelectItem>
-            ))}
+            {roots.map((parent) => {
+              const subs = childrenByParent.get(parent.id) ?? [];
+              return (
+                <SelectGroup key={parent.id}>
+                  <SelectLabel>{parent.name}</SelectLabel>
+                  <SelectItem value={parent.slug}>{parent.name} (alle)</SelectItem>
+                  {subs.map((sub) => (
+                    <SelectItem key={sub.id} value={sub.slug}>
+                      {sub.name}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              );
+            })}
           </SelectContent>
         </Select>
       </div>
