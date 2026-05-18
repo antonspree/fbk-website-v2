@@ -5,30 +5,20 @@ import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
 import { SterneBewertung } from "@/components/common/SterneBewertung";
 import { createClient } from "@/lib/supabase/server";
-import type { MaschineWithKategorie, Bewertung } from "@/lib/types";
+import { KategorieIcon } from "@/components/kategorien/KategorieIcon";
+import type { MaschineWithKategorie, Bewertung, Kategorie } from "@/lib/types";
 import { formatDatum } from "@/lib/utils";
-
-const kategorien = [
-  { name: "Drehmaschinen", slug: "drehmaschinen", icon: "⚙️" },
-  { name: "Fräsmaschinen", slug: "fraesmaschinen", icon: "🔧" },
-  { name: "Bearbeitungszentren", slug: "bearbeitungszentren", icon: "🏭" },
-  { name: "Flachschleifmaschinen", slug: "flachschleifmaschinen", icon: "⚡" },
-  { name: "Bandsägeautomaten", slug: "bandsaegautomaten", icon: "🔩" },
-  { name: "Blechbearbeitung", slug: "blechbearbeitung", icon: "🛠️" },
-  { name: "Pressen", slug: "pressen", icon: "🔨" },
-  { name: "Sonstiges", slug: "sonstiges", icon: "📦" },
-];
 
 const usps = [
   {
     icon: Wrench,
     title: "Über 20 Jahre Erfahrung",
-    text: "Unser Team kennt den Maschinenmarkt seit Jahrzehnten. Wir handeln nicht nur – wir beraten.",
+    text: "Unser Team kennt den Maschinenmarkt seit Jahrzehnten. Wir handeln nicht nur – wir beraten und begutachten.",
   },
   {
     icon: Package,
-    title: "Großes Lager",
-    text: "Über 100 Maschinen ständig verfügbar. Neue und gebrauchte Maschinen auf einem Platz.",
+    title: "Großes Portfolio",
+    text: "Über 500 Maschinen im Portfolio. Neue und gebrauchte Werkzeugmaschinen – ständig erweitert.",
   },
   {
     icon: Users,
@@ -54,6 +44,16 @@ async function getFeaturedMaschinen(): Promise<MaschineWithKategorie[]> {
   return (data as MaschineWithKategorie[]) ?? [];
 }
 
+async function getStartseitenKategorien(): Promise<Kategorie[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("kategorien")
+    .select("*")
+    .is("parent_id", null)
+    .order("name");
+  return (data as Kategorie[]) ?? [];
+}
+
 async function getBewertungen(): Promise<Bewertung[]> {
   const supabase = await createClient();
   const { data } = await supabase
@@ -66,9 +66,10 @@ async function getBewertungen(): Promise<Bewertung[]> {
 }
 
 export default async function Startseite() {
-  const [featuredMaschinen, bewertungen] = await Promise.all([
+  const [featuredMaschinen, bewertungen, startseitenKategorien] = await Promise.all([
     getFeaturedMaschinen(),
     getBewertungen(),
+    getStartseitenKategorien(),
   ]);
 
   return (
@@ -91,11 +92,11 @@ export default async function Startseite() {
             </span>
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-none mb-6">
               WERKZEUG&shy;MASCHINEN –<br />
-              <span className="text-[#1f4a73]">HANDEL &amp; INDUSTRIE</span>
+              <span className="text-[#1f4a73]">HANDEL &amp; GUTACHTEN</span>
             </h1>
             <p className="text-white/80 text-lg leading-relaxed mb-8 max-w-xl">
-              Neue und gebrauchte Maschinen für Industrie und Handwerk. Persönliche Beratung,
-              faire Preise, schnelle Abwicklung – seit über 20 Jahren.
+              Ihr Händler und Gutachter für neue und gebrauchte Werkzeugmaschinen. Persönliche
+              Beratung, faire Preise, schnelle Abwicklung – seit über 20 Jahren.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button
@@ -119,8 +120,8 @@ export default async function Startseite() {
             </div>
             <div className="mt-8 flex flex-wrap gap-6 text-white/60 text-sm">
               <div className="flex items-center gap-2">
-                <span className="text-[#1f4a73] font-bold text-xl font-heading">100+</span>
-                <span>Maschinen im Lager</span>
+                <span className="text-[#1f4a73] font-bold text-xl font-heading">500+</span>
+                <span>Maschinen im Portfolio</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[#1f4a73] font-bold text-xl font-heading">20+</span>
@@ -155,13 +156,18 @@ export default async function Startseite() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {kategorien.map((kat) => (
+            {startseitenKategorien.length === 0 && (
+              <p className="col-span-full text-center text-gray-500 text-sm py-6">
+                Kategorien können im Admin-Bereich angelegt werden.
+              </p>
+            )}
+            {startseitenKategorien.map((kat) => (
               <Link
-                key={kat.slug}
+                key={kat.id}
                 href={`/maschinen?kategorie=${kat.slug}`}
                 className="group bg-white rounded-lg p-5 border border-gray-200 hover:border-[#1f4a73] hover:shadow-md transition-all duration-200 flex flex-col items-center text-center"
               >
-                <span className="text-3xl mb-3">{kat.icon}</span>
+                <KategorieIcon kategorie={kat} />
                 <span className="font-heading font-bold text-[#6397cc] text-sm leading-tight group-hover:text-[#1f4a73] transition-colors">
                   {kat.name}
                 </span>
@@ -226,7 +232,7 @@ export default async function Startseite() {
                 Unsere Lager in der Region Kassel
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Über 100 Maschinen stehen ständig zur Verfügung – zum Ansehen, Testen und
+                Über 500 Maschinen stehen in unserem Portfolio zur Verfügung – zum Ansehen, Testen und
                 sofortigen Mitnehmen. Unsere Bestände stehen in <strong>zwei Lagerstandorten</strong>{" "}
                 (Hess. Lichtenau bei Fa. Richter und Niestetal bei Fa. Tomic) – beide an die A7
                 angebunden, gut erreichbar aus ganz Nordhessen und darüber hinaus.

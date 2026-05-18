@@ -38,7 +38,7 @@ export function Footer() {
               <SiteLogo variant="footer" priority={false} />
             </Link>
             <p className="text-white/60 text-sm mb-5 leading-relaxed">
-              Ihr zuverlässiger Partner für neue und gebrauchte Werkzeugmaschinen –
+              Ihr Händler und Gutachter für neue und gebrauchte Werkzeugmaschinen –
               seit über 20 Jahren.
             </p>
             <div className="space-y-4">

@@ -13,7 +13,7 @@ type SiteLogoProps = {
 
 export function SiteLogo({ variant = "header", priority }: SiteLogoProps) {
   const heightClass =
-    variant === "header" ? "h-10 max-h-[2.75rem]" : variant === "footer" ? "h-9" : "h-8";
+    variant === "header" ? "h-11 sm:h-12 max-h-[3rem]" : variant === "footer" ? "h-10" : "h-8";
 
   return (
     <Image

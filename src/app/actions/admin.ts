@@ -34,6 +34,8 @@ export async function createKategorie(data: {
   slug: string;
   beschreibung?: string | null;
   parent_id?: string | null;
+  icon?: string | null;
+  icon_url?: string | null;
 }): Promise<{ success: true; data: Kategorie } | { success: false; error: string }> {
   const supabase = createAdminClient();
 
@@ -59,6 +61,8 @@ export async function createKategorie(data: {
     slug: data.slug,
     beschreibung: data.beschreibung ?? null,
     parent_id: data.parent_id ?? null,
+    icon: data.icon?.trim() || null,
+    icon_url: data.icon_url?.trim() || null,
   };
 
   const { data: row, error } = await supabase.from("kategorien").insert(insert).select().single();
@@ -67,6 +71,38 @@ export async function createKategorie(data: {
   revalidatePath("/admin/kategorien");
   revalidatePath("/maschinen");
   revalidatePath("/maschinen-neu");
+  revalidatePath("/");
+  return { success: true, data: row as Kategorie };
+}
+
+export async function updateKategorie(
+  id: string,
+  data: {
+    icon?: string | null;
+    icon_url?: string | null;
+    name?: string;
+    slug?: string;
+    beschreibung?: string | null;
+  }
+): Promise<{ success: true; data: Kategorie } | { success: false; error: string }> {
+  const supabase = createAdminClient();
+  const patch = {
+    ...(data.name !== undefined && { name: data.name }),
+    ...(data.slug !== undefined && { slug: data.slug }),
+    ...(data.beschreibung !== undefined && { beschreibung: data.beschreibung }),
+    ...(data.icon !== undefined && { icon: data.icon?.trim() || null }),
+    ...(data.icon_url !== undefined && { icon_url: data.icon_url?.trim() || null }),
+  };
+  const { data: row, error } = await supabase
+    .from("kategorien")
+    .update(patch)
+    .eq("id", id)
+    .select()
+    .single();
+  if (error) return { success: false, error: error.message };
+  revalidatePath("/admin/kategorien");
+  revalidatePath("/maschinen");
+  revalidatePath("/");
   return { success: true, data: row as Kategorie };
 }
 
@@ -82,6 +118,7 @@ export async function deleteKategorie(id: string): Promise<{ success: boolean; e
   revalidatePath("/admin/kategorien");
   revalidatePath("/maschinen");
   revalidatePath("/maschinen-neu");
+  revalidatePath("/");
   return { success: true };
 }
 

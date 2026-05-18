@@ -68,7 +68,7 @@ export default function UeberUnsPage() {
               <p className="text-gray-700 text-sm leading-relaxed mb-4">
                 Wir handeln mit neuen und gebrauchten Werkzeugmaschinen aller Art: Drehmaschinen,
                 Fräsmaschinen, Bearbeitungszentren, Schleifmaschinen, Sägen, Pressen und vieles mehr.
-                Unsere Lagerstandorte in der Region Kassel umfassen ständig über 100 Maschinen,
+                Unser Portfolio umfasst über 500 Maschinen in der Region Kassel,
                 die nach Vereinbarung besichtigt und getestet werden können.
               </p>
               <p className="text-gray-700 text-sm leading-relaxed">
@@ -161,8 +161,8 @@ export default function UeberUnsPage() {
                 <p className="text-gray-600 text-sm mt-1">Jahre Erfahrung</p>
               </div>
               <div className="text-center">
-                <span className="font-heading text-4xl font-bold text-[#1f4a73]">100+</span>
-                <p className="text-gray-600 text-sm mt-1">Maschinen im Lager</p>
+                <span className="font-heading text-4xl font-bold text-[#1f4a73]">500+</span>
+                <p className="text-gray-600 text-sm mt-1">Maschinen im Portfolio</p>
               </div>
               <div className="text-center">
                 <span className="font-heading text-4xl font-bold text-[#1f4a73]">DE/EU</span>

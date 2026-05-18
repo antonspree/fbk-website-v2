@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, Phone } from "lucide-react";
+import { INSTAGRAM_URL } from "@/lib/site";
+import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { SiteLogo } from "@/components/layout/SiteLogo";
@@ -84,6 +86,15 @@ export function Header() {
           {/* CTA + Telefon */}
           <div className="hidden lg:flex items-center gap-3">
             <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-white/80 hover:text-white transition-colors rounded-md hover:bg-white/10"
+              aria-label="Instagram"
+            >
+              <InstagramIcon className="w-5 h-5" />
+            </a>
+            <a
               href="tel:+4956057068"
               className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
             >
@@ -94,6 +105,16 @@ export function Header() {
               <Link href="/kontakt">Anfrage senden</Link>
             </Button>
           </div>
+
+          <a
+            href={INSTAGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="lg:hidden p-2 text-white/80 hover:text-white transition-colors"
+            aria-label="Instagram"
+          >
+            <InstagramIcon className="w-5 h-5" />
+          </a>
 
           {/* Mobile Hamburger */}
           <Sheet>
@@ -132,6 +153,15 @@ export function Header() {
                   ))}
                 </nav>
                 <div className="p-6 border-t border-white/10 space-y-3">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
+                  >
+                    <InstagramIcon className="w-4 h-4 text-[#1f4a73]" />
+                    <span>Instagram</span>
+                  </a>
                   <a
                     href="tel:+4956057068"
                     className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"

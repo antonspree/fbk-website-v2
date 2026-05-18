@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
 import { MaschineFilter } from "@/components/maschinen/MaschineFilter";
 import { createClient } from "@/lib/supabase/server";
+import { resolveKategorieIdsForSlug } from "@/lib/kategorienFilter";
 import type { MaschineWithKategorie, Kategorie } from "@/lib/types";
 
 export const metadata: Metadata = {
@@ -48,12 +49,10 @@ async function getMaschinen(searchParams: SearchParams, zustandFilter?: "neu" | 
   }
 
   if (searchParams.kategorie && searchParams.kategorie !== "alle") {
-    const { data: kat } = await supabase
-      .from("kategorien")
-      .select("id")
-      .eq("slug", searchParams.kategorie)
-      .single();
-    if (kat) query = query.eq("kategorie_id", (kat as { id: string }).id);
+    const katIds = await resolveKategorieIdsForSlug(supabase, searchParams.kategorie);
+    if (katIds?.length) {
+      query = query.in("kategorie_id", katIds);
+    }
   }
 
   if (searchParams.preis_min) {

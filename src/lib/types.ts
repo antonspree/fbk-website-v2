@@ -66,6 +66,8 @@ export interface Kategorie {
   slug: string;
   beschreibung: string | null;
   parent_id: string | null;
+  icon: string | null;
+  icon_url: string | null;
   created_at: string;
 }
 
