@@ -1,17 +1,10 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { MaschineFormClient } from "@/components/admin/MaschineFormClient";
-import { createClient } from "@/lib/supabase/server";
-import type { Kategorie } from "@/lib/types";
-
-async function getKategorien(): Promise<Kategorie[]> {
-  const supabase = await createClient();
-  const { data } = await supabase.from("kategorien").select("*").order("name");
-  return data ?? [];
-}
+import { listKategorien } from "@/lib/db/queries";
 
 export default async function NeueMaschineAdminPage() {
-  const kategorien = await getKategorien();
+  const kategorien = await listKategorien();
 
   return (
     <div className="p-8">

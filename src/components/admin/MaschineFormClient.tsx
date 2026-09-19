@@ -19,8 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { createMaschine, updateMaschine, deleteMaschine, saveMaschineBildMetadata, deleteMaschineBild } from "@/app/actions/maschinen";
-import { createClient } from "@/lib/supabase/client";
+import { createMaschine, updateMaschine, deleteMaschine, deleteMaschineBild, uploadMaschineBild, setMaschineTitelbild } from "@/app/actions/maschinen";
 import { compressImage } from "@/lib/imageCompression";
 import type { Kategorie, MaschineWithKategorie, MaschineBild } from "@/lib/types";
 import { partitionKategorienHierarchie } from "@/lib/kategorienTree";
@@ -129,7 +128,6 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
     if (!maschine || !e.target.files?.length) return;
     setUploadingImage(true);
 
-    const supabase = createClient();
     const files = Array.from(e.target.files);
 
     for (let i = 0; i < files.length; i++) {
@@ -143,34 +141,17 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
         });
 
         setUploadProgress(`Bild ${i + 1}/${files.length}: Lade hoch… (${compressedSizeKB} KB, von ${originalSizeKB} KB)`);
-        const filename = `${maschine.id}/${Date.now()}-${Math.random().toString(36).slice(2)}.webp`;
-        const { data: upload, error } = await supabase.storage
-          .from("maschinen-bilder")
-          .upload(filename, compressed, { contentType: "image/webp" });
-
-        if (error) {
-          toast.error(`Upload-Fehler: ${error.message}`);
-          continue;
-        }
-
-        const { data: { publicUrl } } = supabase.storage
-          .from("maschinen-bilder")
-          .getPublicUrl(upload.path);
-
         const istTitelbild = bilder.length === 0 && i === 0;
-        const result = await saveMaschineBildMetadata(maschine.id, publicUrl, istTitelbild, bilder.length + i);
+        const fd = new FormData();
+        fd.append("file", compressed);
+        fd.append("position", String(bilder.length + i));
+        fd.append("istTitelbild", String(istTitelbild));
+        const result = await uploadMaschineBild(maschine.id, fd);
 
         if (result.success) {
-          setBilder(prev => [...prev, {
-            id: `${Date.now()}-${i}`,
-            maschine_id: maschine.id,
-            url: publicUrl,
-            position: bilder.length + i,
-            ist_titelbild: istTitelbild,
-            created_at: new Date().toISOString(),
-          }]);
+          setBilder(prev => [...prev, result.bild]);
         } else {
-          toast.error(`Datenbankfehler: ${result.error}`);
+          toast.error(`Upload-Fehler: ${result.error}`);
         }
       } catch (err) {
         toast.error(`Fehler bei ${file.name}: ${err instanceof Error ? err.message : "Unbekannter Fehler"}`);
@@ -186,9 +167,11 @@ export function MaschineFormClient({ maschine, kategorien }: MaschineFormClientP
   async function handleSetTitelbild(bildId: string) {
     setBilder(prev => prev.map(b => ({ ...b, ist_titelbild: b.id === bildId })));
     if (maschine) {
-      const supabase = createClient();
-      await supabase.from("maschinen_bilder").update({ ist_titelbild: false }).eq("maschine_id", maschine.id);
-      await supabase.from("maschinen_bilder").update({ ist_titelbild: true }).eq("id", bildId);
+      const result = await setMaschineTitelbild(maschine.id, bildId);
+      if (!result.success) {
+        toast.error(`Fehler: ${result.error}`);
+        return;
+      }
     }
     toast.success("Titelbild gesetzt!");
   }

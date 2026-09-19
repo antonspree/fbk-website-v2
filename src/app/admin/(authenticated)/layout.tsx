@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { auth } from "@/lib/auth";
 import { AdminSidebar } from "@/components/layout/AdminSidebar";
 
 export default async function AuthenticatedAdminLayout({
@@ -7,19 +7,16 @@ export default async function AuthenticatedAdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const session = await auth();
 
-  if (!user) {
+  if (!session?.user) {
     redirect("/admin");
   }
 
   return (
     <div className="flex min-h-screen">
       <AdminSidebar />
-      <div className="flex-1 bg-gray-50 overflow-auto">
-        {children}
-      </div>
+      <div className="flex-1 bg-gray-50 overflow-auto">{children}</div>
     </div>
   );
 }

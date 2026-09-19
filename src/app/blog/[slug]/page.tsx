@@ -7,40 +7,19 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { createPublicSupabaseClient } from "@/lib/supabase/public";
-import type { BlogPost } from "@/lib/types";
+import { listBlogPosts, getBlogPostBySlug, listRelatedBlogPosts, listAllBlogSlugs } from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  const supabase = createPublicSupabaseClient();
-  const { data } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("slug", slug)
-    .eq("veroeffentlicht", true)
-    .single();
-  return data ?? null;
+async function getBlogPost(slug: string) {
+  return getBlogPostBySlug(slug, true);
 }
 
-async function getRelatedPosts(currentSlug: string, kategorie: string | null): Promise<BlogPost[]> {
-  const supabase = createPublicSupabaseClient();
-  let query = supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("veroeffentlicht", true)
-    .neq("slug", currentSlug)
-    .limit(3);
-
-  if (kategorie) {
-    query = query.eq("kategorie", kategorie);
-  }
-
-  const { data } = await query.order("created_at", { ascending: false });
-  return data ?? [];
+async function getRelatedPosts(currentSlug: string, kategorie: string | null) {
+  return listRelatedBlogPosts(currentSlug, kategorie, 3);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -61,10 +40,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   try {
-    const { createAdminClient } = await import("@/lib/supabase/admin");
-    const supabase = createAdminClient();
-    const { data } = await supabase.from("blog_posts").select("slug").eq("veroeffentlicht", true);
-    return (data ?? []).map((row: { slug: string }) => ({ slug: row.slug }));
+    const rows = await listAllBlogSlugs();
+    return rows.map((row) => ({ slug: row.slug }));
   } catch {
     return [];
   }

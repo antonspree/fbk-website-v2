@@ -1,6 +1,7 @@
 "use server";
 
-import { createAdminClient } from "@/lib/supabase/admin";
+import { db } from "@/lib/db";
+import { bewertungen } from "@/lib/db/schema";
 
 interface BewertungData {
   name: string;
@@ -9,19 +10,16 @@ interface BewertungData {
 }
 
 export async function sendeBewertung(data: BewertungData) {
-  const supabase = createAdminClient();
-
-  const { error } = await supabase.from("bewertungen").insert({
-    name: data.name,
-    bewertung: data.bewertung,
-    text: data.text,
-    freigegeben: false,
-  });
-
-  if (error) {
+  try {
+    await db.insert(bewertungen).values({
+      name: data.name,
+      bewertung: data.bewertung,
+      text: data.text,
+      freigegeben: false,
+    });
+    return { success: true };
+  } catch (error) {
     console.error("Fehler beim Speichern der Bewertung:", error);
     return { success: false };
   }
-
-  return { success: true };
 }

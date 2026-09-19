@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Calendar, ArrowRight } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
-import type { BlogPost } from "@/lib/types";
+import { listBlogPosts } from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 
@@ -13,14 +12,8 @@ export const metadata: Metadata = {
     "Tipps, Ratgeber und Fachwissen rund um Werkzeugmaschinen, Maschinenkauf, Betriebsauflösungen und Industrieequipment vom erfahrenen Händler aus Kassel.",
 };
 
-async function getBlogPosts(): Promise<BlogPost[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .eq("veroeffentlicht", true)
-    .order("created_at", { ascending: false });
-  return data ?? [];
+async function getBlogPosts() {
+  return listBlogPosts({ veroeffentlicht: true });
 }
 
 export default async function BlogPage() {

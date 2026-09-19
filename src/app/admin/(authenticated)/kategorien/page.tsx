@@ -1,18 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
+import { listKategorien } from "@/lib/db/queries";
 import { KategorienAdminClient } from "@/components/admin/KategorienAdminClient";
-import type { Kategorie } from "@/lib/types";
-
-async function getKategorien(): Promise<Kategorie[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("kategorien")
-    .select("*")
-    .order("name");
-  return data ?? [];
-}
 
 export default async function AdminKategorienPage() {
-  const kategorien = await getKategorien();
+  const kategorien = await listKategorien();
 
   return (
     <div className="p-8">

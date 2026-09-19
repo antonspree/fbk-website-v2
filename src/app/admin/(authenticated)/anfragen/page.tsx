@@ -1,18 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
+import { listAnfragen } from "@/lib/db/queries";
 import { AnfragenClient } from "@/components/admin/AnfragenClient";
-import type { Anfrage } from "@/lib/types";
-
-async function getAnfragen(): Promise<Anfrage[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("anfragen")
-    .select("*")
-    .order("created_at", { ascending: false });
-  return data ?? [];
-}
 
 export default async function AdminAnfragenPage() {
-  const anfragen = await getAnfragen();
+  const anfragen = await listAnfragen();
   const ungelesen = anfragen.filter(a => !a.gelesen).length;
 
   return (

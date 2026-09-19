@@ -12,7 +12,7 @@ import {
   LogOut,
   ChevronRight,
 } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
+import { signOut } from "next-auth/react";
 import { SiteLogo } from "@/components/layout/SiteLogo";
 
 const navItems = [
@@ -29,9 +29,7 @@ export function AdminSidebar() {
   const router = useRouter();
 
   async function handleLogout() {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.push("/admin");
+    await signOut({ callbackUrl: "/admin" });
     router.refresh();
   }
 

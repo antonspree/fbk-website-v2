@@ -2,21 +2,11 @@ import Link from "next/link";
 import { Plus, Pencil, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { createClient } from "@/lib/supabase/server";
+import { listBlogPosts } from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
-import type { BlogPost } from "@/lib/types";
-
-async function getBlogPosts(): Promise<BlogPost[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("blog_posts")
-    .select("*")
-    .order("created_at", { ascending: false });
-  return data ?? [];
-}
 
 export default async function AdminBlogPage() {
-  const posts = await getBlogPosts();
+  const posts = await listBlogPosts();
 
   return (
     <div className="p-8">

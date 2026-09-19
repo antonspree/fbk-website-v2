@@ -6,9 +6,8 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
 import { MaschineFilter } from "@/components/maschinen/MaschineFilter";
-import { createClient } from "@/lib/supabase/server";
-import { resolveKategorieIdsForSlug } from "@/lib/kategorienFilter";
-import type { MaschineWithKategorie, Kategorie } from "@/lib/types";
+import { listKategorien, listMaschinen } from "@/lib/db/queries";
+import type { Kategorie } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Gebrauchte Werkzeugmaschinen",
@@ -30,72 +29,28 @@ interface SearchParams {
   suche?: string;
 }
 
-async function getMaschinen(searchParams: SearchParams, zustandFilter?: "neu" | "gebraucht") {
-  const supabase = await createClient();
+async function getMaschinen(searchParams: SearchParams) {
+  const zustand =
+    searchParams.zustand && searchParams.zustand !== "alle"
+      ? (searchParams.zustand as "neu" | "gebraucht")
+      : undefined;
 
-  const page = parseInt(searchParams.seite ?? "1");
-  const from = (page - 1) * PAGE_SIZE;
-  const to = from + PAGE_SIZE - 1;
-
-  let query = supabase
-    .from("maschinen")
-    .select("*, kategorien(*), maschinen_bilder(*)", { count: "exact" })
-    .eq("aktiv", true);
-
-  if (zustandFilter) {
-    query = query.eq("zustand", zustandFilter);
-  } else if (searchParams.zustand && searchParams.zustand !== "alle") {
-    query = query.eq("zustand", searchParams.zustand as "neu" | "gebraucht");
-  }
-
-  if (searchParams.kategorie && searchParams.kategorie !== "alle") {
-    const katIds = await resolveKategorieIdsForSlug(supabase, searchParams.kategorie);
-    if (katIds?.length) {
-      query = query.in("kategorie_id", katIds);
-    }
-  }
-
-  if (searchParams.preis_min) {
-    query = query.gte("preis", parseInt(searchParams.preis_min));
-  }
-  if (searchParams.preis_max) {
-    query = query.lte("preis", parseInt(searchParams.preis_max));
-  }
-  if (searchParams.baujahr_min) {
-    query = query.gte("baujahr", parseInt(searchParams.baujahr_min));
-  }
-  if (searchParams.baujahr_max) {
-    query = query.lte("baujahr", parseInt(searchParams.baujahr_max));
-  }
-  if (searchParams.suche) {
-    const term = searchParams.suche;
-    query = query.or(`titel.ilike.%${term}%,hersteller.ilike.%${term}%,typ.ilike.%${term}%`);
-  }
-
-  const sortierung = searchParams.sortierung ?? "newest";
-  if (sortierung === "price_asc") {
-    query = query.order("preis", { ascending: true, nullsFirst: false });
-  } else if (sortierung === "price_desc") {
-    query = query.order("preis", { ascending: false, nullsFirst: false });
-  } else {
-    query = query.order("created_at", { ascending: false });
-  }
-
-  query = query.range(from, to);
-
-  const { data, count } = await query;
-  return {
-    maschinen: (data as MaschineWithKategorie[]) ?? [],
-    total: count ?? 0,
-    page,
-    totalPages: Math.ceil((count ?? 0) / PAGE_SIZE),
-  };
+  return listMaschinen({
+    page: parseInt(searchParams.seite ?? "1"),
+    pageSize: PAGE_SIZE,
+    zustand,
+    kategorieSlug: searchParams.kategorie,
+    preisMin: searchParams.preis_min ? parseInt(searchParams.preis_min) : undefined,
+    preisMax: searchParams.preis_max ? parseInt(searchParams.preis_max) : undefined,
+    baujahrMin: searchParams.baujahr_min ? parseInt(searchParams.baujahr_min) : undefined,
+    baujahrMax: searchParams.baujahr_max ? parseInt(searchParams.baujahr_max) : undefined,
+    suche: searchParams.suche,
+    sortierung: searchParams.sortierung ?? "newest",
+  });
 }
 
 async function getKategorien(): Promise<Kategorie[]> {
-  const supabase = await createClient();
-  const { data } = await supabase.from("kategorien").select("*").order("name");
-  return data ?? [];
+  return listKategorien();
 }
 
 interface MaschinenPageProps {

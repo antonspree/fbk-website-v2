@@ -2,22 +2,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { BlogEditorClient } from "@/components/admin/BlogEditorClient";
-import { createClient } from "@/lib/supabase/server";
-import type { BlogPost } from "@/lib/types";
+import { getBlogPostById } from "@/lib/db/queries";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-async function getBlogPost(id: string): Promise<BlogPost | null> {
-  const supabase = await createClient();
-  const { data } = await supabase.from("blog_posts").select("*").eq("id", id).single();
-  return data ?? null;
-}
-
 export default async function BearbeiteBlogPostAdminPage({ params }: Props) {
   const { id } = await params;
-  const post = await getBlogPost(id);
+  const post = await getBlogPostById(id);
   if (!post) notFound();
 
   return (

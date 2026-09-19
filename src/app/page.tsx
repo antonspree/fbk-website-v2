@@ -4,9 +4,12 @@ import { ArrowRight, Wrench, Package, Users, Truck, ChevronRight } from "lucide-
 import { Button } from "@/components/ui/button";
 import { MaschineCard } from "@/components/maschinen/MaschineCard";
 import { SterneBewertung } from "@/components/common/SterneBewertung";
-import { createClient } from "@/lib/supabase/server";
 import { KategorieIcon } from "@/components/kategorien/KategorieIcon";
-import type { MaschineWithKategorie, Bewertung, Kategorie } from "@/lib/types";
+import {
+  listFeaturedMaschinen,
+  listKategorien,
+  listBewertungen,
+} from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
 
 const usps = [
@@ -32,44 +35,11 @@ const usps = [
   },
 ];
 
-async function getFeaturedMaschinen(): Promise<MaschineWithKategorie[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("maschinen")
-    .select("*, kategorien(*), maschinen_bilder(*)")
-    .eq("featured", true)
-    .eq("aktiv", true)
-    .order("created_at", { ascending: false })
-    .limit(6);
-  return (data as MaschineWithKategorie[]) ?? [];
-}
-
-async function getStartseitenKategorien(): Promise<Kategorie[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("kategorien")
-    .select("*")
-    .is("parent_id", null)
-    .order("name");
-  return (data as Kategorie[]) ?? [];
-}
-
-async function getBewertungen(): Promise<Bewertung[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("bewertungen")
-    .select("*")
-    .eq("freigegeben", true)
-    .order("created_at", { ascending: false })
-    .limit(3);
-  return data ?? [];
-}
-
 export default async function Startseite() {
   const [featuredMaschinen, bewertungen, startseitenKategorien] = await Promise.all([
-    getFeaturedMaschinen(),
-    getBewertungen(),
-    getStartseitenKategorien(),
+    listFeaturedMaschinen(6),
+    listBewertungen({ freigegeben: true, limit: 3 }),
+    listKategorien({ rootsOnly: true }),
   ]);
 
   return (

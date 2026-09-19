@@ -1,6 +1,7 @@
 "use server";
 
-import { createAdminClient } from "@/lib/supabase/admin";
+import { db } from "@/lib/db";
+import { anfragen } from "@/lib/db/schema";
 
 interface AnfrageData {
   name: string;
@@ -13,22 +14,19 @@ interface AnfrageData {
 }
 
 export async function sendeAnfrage(data: AnfrageData) {
-  const supabase = createAdminClient();
-
-  const { error } = await supabase.from("anfragen").insert({
-    name: data.name,
-    email: data.email,
-    telefon: data.telefon || null,
-    betreff: data.betreff || null,
-    nachricht: data.nachricht,
-    maschine_id: data.maschine_id || null,
-    typ: data.typ,
-  });
-
-  if (error) {
+  try {
+    await db.insert(anfragen).values({
+      name: data.name,
+      email: data.email,
+      telefon: data.telefon || null,
+      betreff: data.betreff || null,
+      nachricht: data.nachricht,
+      maschineId: data.maschine_id || null,
+      typ: data.typ,
+    });
+    return { success: true };
+  } catch (error) {
     console.error("Fehler beim Speichern der Anfrage:", error);
     return { success: false };
   }
-
-  return { success: true };
 }

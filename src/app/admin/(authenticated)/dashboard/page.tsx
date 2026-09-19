@@ -1,36 +1,17 @@
 import Link from "next/link";
 import { MessageSquare, Wrench, Star, Eye } from "lucide-react";
-import { createClient } from "@/lib/supabase/server";
+import { adminDashboardStats } from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
-import type { Anfrage, Maschine } from "@/lib/types";
-
-async function getDashboardStats() {
-  const supabase = await createClient();
-  const [
-    { count: maschinen },
-    { count: anfragen },
-    { count: bewertungen },
-    { data: letzteAnfragen },
-    { data: letzteMaschinen },
-  ] = await Promise.all([
-    supabase.from("maschinen").select("*", { count: "exact", head: true }).eq("aktiv", true),
-    supabase.from("anfragen").select("*", { count: "exact", head: true }).eq("gelesen", false),
-    supabase.from("bewertungen").select("*", { count: "exact", head: true }).eq("freigegeben", false),
-    supabase.from("anfragen").select("*").order("created_at", { ascending: false }).limit(5),
-    supabase.from("maschinen").select("*").order("created_at", { ascending: false }).limit(5),
-  ]);
-
-  return {
-    maschinen: maschinen ?? 0,
-    anfragen: anfragen ?? 0,
-    bewertungen: bewertungen ?? 0,
-    letzteAnfragen: (letzteAnfragen as Anfrage[]) ?? [],
-    letzteMaschinen: (letzteMaschinen as Maschine[]) ?? [],
-  };
-}
 
 export default async function DashboardPage() {
-  const stats = await getDashboardStats();
+  const raw = await adminDashboardStats();
+  const stats = {
+    maschinen: raw.maschinenCount,
+    anfragen: raw.anfragenUngelesen,
+    bewertungen: raw.bewertungenPending,
+    letzteAnfragen: raw.letzteAnfragen,
+    letzteMaschinen: raw.letzteMaschinen,
+  };
 
   const karten = [
     {

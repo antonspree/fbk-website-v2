@@ -1,27 +1,17 @@
-import type { SupabaseClient } from "@supabase/supabase-js";
+import { eq } from "drizzle-orm";
+import { db } from "@/lib/db";
+import { kategorien } from "@/lib/db/schema";
 
 /** Liefert alle kategorie_id-Werte für einen Slug-Filter (Hauptkategorie inkl. Unterkategorien). */
-export async function resolveKategorieIdsForSlug(
-  supabase: SupabaseClient,
-  slug: string
-): Promise<string[] | null> {
-  const { data: kat } = await supabase
-    .from("kategorien")
-    .select("id")
-    .eq("slug", slug)
-    .maybeSingle();
-
+export async function resolveKategorieIdsForSlug(slug: string): Promise<string[] | null> {
+  const [kat] = await db.select().from(kategorien).where(eq(kategorien.slug, slug)).limit(1);
   if (!kat) return null;
-
-  const rootId = (kat as { id: string }).id;
-  const { data: children } = await supabase
-    .from("kategorien")
-    .select("id")
-    .eq("parent_id", rootId);
-
-  const childIds = (children ?? []).map((c) => (c as { id: string }).id);
-  if (childIds.length > 0) {
-    return [rootId, ...childIds];
+  const children = await db
+    .select({ id: kategorien.id })
+    .from(kategorien)
+    .where(eq(kategorien.parentId, kat.id));
+  if (children.length > 0) {
+    return [kat.id, ...children.map((c) => c.id)];
   }
-  return [rootId];
+  return [kat.id];
 }

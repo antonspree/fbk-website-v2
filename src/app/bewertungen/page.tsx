@@ -4,8 +4,7 @@ import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { BewertungCard } from "@/components/bewertungen/BewertungCard";
 import { BewertungFormular } from "@/components/bewertungen/BewertungFormular";
-import { createClient } from "@/lib/supabase/server";
-import type { Bewertung } from "@/lib/types";
+import { listBewertungen } from "@/lib/db/queries";
 
 export const metadata: Metadata = {
   title: "Kundenbewertungen",
@@ -13,18 +12,8 @@ export const metadata: Metadata = {
     "Lesen Sie, was unsere Kunden über die Firmenberatung Kassel sagen. Bewertungen von Käufern und Verkäufern von Werkzeugmaschinen.",
 };
 
-async function getBewertungen(): Promise<Bewertung[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("bewertungen")
-    .select("*")
-    .eq("freigegeben", true)
-    .order("created_at", { ascending: false });
-  return data ?? [];
-}
-
 export default async function BewertungenPage() {
-  const bewertungen = await getBewertungen();
+  const bewertungen = await listBewertungen({ freigegeben: true });
   const avg = bewertungen.length
     ? (bewertungen.reduce((sum, b) => sum + b.bewertung, 0) / bewertungen.length).toFixed(1)
     : null;

@@ -7,22 +7,14 @@ import { MaschineGalerie } from "@/components/maschinen/MaschineGalerie";
 import { SpecsTabelle } from "@/components/maschinen/SpecsTabelle";
 import { AnfrageFormular } from "@/components/forms/AnfrageFormular";
 import { PreisAnzeige } from "@/components/common/PreisAnzeige";
-import { createPublicSupabaseClient } from "@/lib/supabase/public";
-import type { MaschineWithKategorie } from "@/lib/types";
+import { getMaschineBySlug, listAllMaschineSlugs } from "@/lib/db/queries";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
-async function getMaschine(slug: string): Promise<MaschineWithKategorie | null> {
-  const supabase = createPublicSupabaseClient();
-  const { data } = await supabase
-    .from("maschinen")
-    .select("*, kategorien(*), maschinen_bilder(*)")
-    .eq("slug", slug)
-    .eq("aktiv", true)
-    .single();
-  return (data as unknown as MaschineWithKategorie) ?? null;
+async function getMaschine(slug: string) {
+  return getMaschineBySlug(slug, true);
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -45,10 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export async function generateStaticParams() {
   try {
-    const { createAdminClient } = await import("@/lib/supabase/admin");
-    const supabase = createAdminClient();
-    const { data } = await supabase.from("maschinen").select("slug").eq("aktiv", true);
-    return (data ?? []).map((row: { slug: string }) => ({ slug: row.slug }));
+    const rows = await listAllMaschineSlugs();
+    return rows.map((row) => ({ slug: row.slug }));
   } catch {
     return [];
   }

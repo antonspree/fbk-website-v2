@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { createPublicSupabaseClient } from "@/lib/supabase/public";
+import { sitemapEntries } from "@/lib/db/queries";
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.firmenberatung-kassel.de";
 
@@ -22,22 +22,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    const supabase = createPublicSupabaseClient();
+    const { maschinen, blog } = await sitemapEntries();
 
-    const [{ data: maschinen }, { data: blogPosts }] = await Promise.all([
-      supabase.from("maschinen").select("slug, created_at").eq("aktiv", true),
-      supabase.from("blog_posts").select("slug, created_at").eq("veroeffentlicht", true),
-    ]);
-
-    const maschinenPages: MetadataRoute.Sitemap = (maschinen ?? []).map(({ slug, created_at }) => ({
+    const maschinenPages: MetadataRoute.Sitemap = maschinen.map(({ slug, createdAt }) => ({
       url: `${baseUrl}/maschinen/${slug}`,
-      lastModified: new Date(created_at),
+      lastModified: new Date(createdAt),
       priority: 0.8,
     }));
 
-    const blogPages: MetadataRoute.Sitemap = (blogPosts ?? []).map(({ slug, created_at }) => ({
+    const blogPages: MetadataRoute.Sitemap = blog.map(({ slug, createdAt }) => ({
       url: `${baseUrl}/blog/${slug}`,
-      lastModified: new Date(created_at),
+      lastModified: new Date(createdAt),
       priority: 0.6,
     }));
 

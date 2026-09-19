@@ -3,23 +3,11 @@ import { Plus, Pencil, Eye, Search, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { createClient } from "@/lib/supabase/server";
+import { listMaschinenAdmin } from "@/lib/db/queries";
 import { formatPreis } from "@/lib/utils";
-import type { Maschine } from "@/lib/types";
 
-async function getMaschinen(suche?: string): Promise<Maschine[]> {
-  const supabase = await createClient();
-  let query = supabase
-    .from("maschinen")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (suche) {
-    query = query.or(`titel.ilike.%${suche}%,hersteller.ilike.%${suche}%,typ.ilike.%${suche}%`);
-  }
-
-  const { data } = await query;
-  return data ?? [];
+async function getMaschinen(suche?: string) {
+  return listMaschinenAdmin(suche);
 }
 
 interface Props {

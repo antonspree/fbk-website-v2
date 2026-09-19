@@ -1,18 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
+import { listBewertungen } from "@/lib/db/queries";
 import { BewertungenAdminClient } from "@/components/admin/BewertungenAdminClient";
-import type { Bewertung } from "@/lib/types";
-
-async function getBewertungen(): Promise<Bewertung[]> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("bewertungen")
-    .select("*")
-    .order("created_at", { ascending: false });
-  return data ?? [];
-}
 
 export default async function AdminBewertungenPage() {
-  const bewertungen = await getBewertungen();
+  const bewertungen = await listBewertungen();
   const ausstehend = bewertungen.filter(b => !b.freigegeben).length;
 
   return (

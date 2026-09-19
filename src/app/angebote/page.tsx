@@ -5,8 +5,7 @@ import { ChevronRight, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PreisAnzeige } from "@/components/common/PreisAnzeige";
-import { createClient } from "@/lib/supabase/server";
-import type { AngebotWithMaschine } from "@/lib/types";
+import { listAngebote } from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -15,16 +14,10 @@ export const metadata: Metadata = {
     "Aktuelle Sonderangebote bei Firmenberatung Kassel – gebrauchte Maschinen in Top-Zustand zu besonders günstigen Preisen. Zeitlich begrenzt!",
 };
 
-async function getAngebote(): Promise<AngebotWithMaschine[]> {
-  const supabase = await createClient();
+async function getAngebote() {
   const today = new Date().toISOString().split("T")[0];
-  const { data } = await supabase
-    .from("angebote")
-    .select("*, maschinen(*, kategorien(*), maschinen_bilder(*))")
-    .eq("aktiv", true)
-    .or(`gueltig_bis.is.null,gueltig_bis.gte.${today}`)
-    .order("created_at", { ascending: false });
-  return (data as AngebotWithMaschine[]) ?? [];
+  const all = await listAngebote();
+  return all.filter((a) => !a.gueltig_bis || a.gueltig_bis >= today);
 }
 
 export default async function AngebotePage() {

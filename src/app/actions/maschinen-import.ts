@@ -1,7 +1,11 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createAdminClient } from "@/lib/supabase/admin";
+import { eq } from "drizzle-orm";
+import { put } from "@vercel/blob";
+import { db } from "@/lib/db";
+import { kategorien, maschinen, maschinenBilder } from "@/lib/db/schema";
+import { requireAdmin } from "@/lib/require-admin";
 import { generateSlug } from "@/lib/utils";
 import type { CsvMaschinenZeile } from "@/lib/maschinenImportCsv";
 
@@ -21,7 +25,6 @@ function extFromContentType(ct: string | null): string {
 }
 
 async function fetchUndSpeichereBild(
-  supabase: ReturnType<typeof createAdminClient>,
   maschineId: string,
   url: string,
   position: number,
@@ -64,46 +67,45 @@ async function fetchUndSpeichereBild(
   }
 
   const ext = extFromContentType(ct);
-  const filename = `${maschineId}/${Date.now()}-${position}-${Math.random().toString(36).slice(2)}.${ext}`;
+  const filename = `maschinen/${maschineId}/${Date.now()}-${position}-${Math.random().toString(36).slice(2)}.${ext}`;
 
   const mime =
     ct?.startsWith("image/") ? ct.split(";")[0].trim() : `image/${ext === "jpg" ? "jpeg" : ext}`;
 
-  const { data: upload, error: upErr } = await supabase.storage.from("maschinen-bilder").upload(filename, buf, {
-    contentType: mime,
-    upsert: false,
-  });
+  try {
+    const blob = await put(filename, buf, {
+      access: "public",
+      contentType: mime,
+    });
 
-  if (upErr) return { ok: false, message: upErr.message };
-  if (!upload?.path) return { ok: false, message: "Storage-Upload ohne Pfad" };
+    if (istTitelbild) {
+      await db
+        .update(maschinenBilder)
+        .set({ istTitelbild: false })
+        .where(eq(maschinenBilder.maschineId, maschineId));
+    }
 
-  const {
-    data: { publicUrl },
-  } = supabase.storage.from("maschinen-bilder").getPublicUrl(upload.path);
+    await db.insert(maschinenBilder).values({
+      maschineId,
+      url: blob.url,
+      position,
+      istTitelbild,
+    });
 
-  if (istTitelbild) {
-    await supabase.from("maschinen_bilder").update({ ist_titelbild: false }).eq("maschine_id", maschineId);
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, message: e instanceof Error ? e.message : "Speichern fehlgeschlagen" };
   }
-
-  const { error: dbErr } = await supabase.from("maschinen_bilder").insert({
-    maschine_id: maschineId,
-    url: publicUrl,
-    position,
-    ist_titelbild: istTitelbild,
-  });
-
-  if (dbErr) return { ok: false, message: dbErr.message };
-  return { ok: true };
 }
 
 export async function bulkImportMaschinen(zeilen: CsvMaschinenZeile[]) {
-  const supabase = createAdminClient();
+  await requireAdmin();
   const errors: { zeile: number; message: string }[] = [];
   const bildHinweise: { zeile: number; url: string; message: string }[] = [];
   let imported = 0;
 
-  const { data: kats } = await supabase.from("kategorien").select("id, slug");
-  const slugToKatId = new Map((kats ?? []).map((k: { id: string; slug: string }) => [k.slug, k.id]));
+  const kats = await db.select({ id: kategorien.id, slug: kategorien.slug }).from(kategorien);
+  const slugToKatId = new Map(kats.map((k) => [k.slug, k.id]));
 
   let zeileNr = 0;
   for (const z of zeilen) {
@@ -119,39 +121,45 @@ export async function bulkImportMaschinen(zeilen: CsvMaschinenZeile[]) {
       }
     }
 
-    const { data: maschine, error: insErr } = await supabase
-      .from("maschinen")
-      .insert({
-        slug,
-        titel: z.titel,
-        hersteller: z.hersteller,
-        typ: z.typ,
-        baujahr: z.baujahr ?? null,
-        zustand: z.zustand,
-        preis: z.preis_auf_anfrage ? null : z.preis ?? null,
-        preis_auf_anfrage: z.preis_auf_anfrage,
-        kategorie_id,
-        beschreibung: z.beschreibung ?? null,
-        specs: z.specs ?? null,
-        featured: z.featured ?? false,
-        aktiv: z.aktiv ?? true,
-      })
-      .select("id")
-      .single();
+    try {
+      const [maschine] = await db
+        .insert(maschinen)
+        .values({
+          slug,
+          titel: z.titel,
+          hersteller: z.hersteller,
+          typ: z.typ,
+          baujahr: z.baujahr ?? null,
+          zustand: z.zustand,
+          preis: z.preis_auf_anfrage ? null : z.preis != null ? String(z.preis) : null,
+          preisAufAnfrage: z.preis_auf_anfrage,
+          kategorieId: kategorie_id,
+          beschreibung: z.beschreibung ?? null,
+          specs: z.specs ?? null,
+          featured: z.featured ?? false,
+          aktiv: z.aktiv ?? true,
+        })
+        .returning({ id: maschinen.id });
 
-    if (insErr || !maschine) {
-      errors.push({ zeile: zeileNr, message: insErr?.message ?? "Insert fehlgeschlagen" });
-      continue;
-    }
-
-    const id = maschine.id as string;
-    imported++;
-
-    for (let i = 0; i < z.bild_urls.length; i++) {
-      const r = await fetchUndSpeichereBild(supabase, id, z.bild_urls[i], i, i === 0);
-      if (!r.ok) {
-        bildHinweise.push({ zeile: zeileNr, url: z.bild_urls[i], message: r.message });
+      if (!maschine) {
+        errors.push({ zeile: zeileNr, message: "Insert fehlgeschlagen" });
+        continue;
       }
+
+      const id = maschine.id;
+      imported++;
+
+      for (let i = 0; i < z.bild_urls.length; i++) {
+        const r = await fetchUndSpeichereBild(id, z.bild_urls[i], i, i === 0);
+        if (!r.ok) {
+          bildHinweise.push({ zeile: zeileNr, url: z.bild_urls[i], message: r.message });
+        }
+      }
+    } catch (e) {
+      errors.push({
+        zeile: zeileNr,
+        message: e instanceof Error ? e.message : "Insert fehlgeschlagen",
+      });
     }
   }
 

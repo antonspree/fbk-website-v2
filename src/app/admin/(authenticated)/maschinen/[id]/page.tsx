@@ -2,32 +2,20 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronRight } from "lucide-react";
 import { MaschineFormClient } from "@/components/admin/MaschineFormClient";
-import { createClient } from "@/lib/supabase/server";
-import type { Kategorie, MaschineWithKategorie } from "@/lib/types";
+import { getMaschineById, listKategorien } from "@/lib/db/queries";
+import type { Kategorie } from "@/lib/types";
 
 interface Props {
   params: Promise<{ id: string }>;
 }
 
-async function getMaschine(id: string): Promise<MaschineWithKategorie | null> {
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("maschinen")
-    .select("*, kategorien(*), maschinen_bilder(*)")
-    .eq("id", id)
-    .single();
-  return (data as unknown as MaschineWithKategorie) ?? null;
-}
-
 async function getKategorien(): Promise<Kategorie[]> {
-  const supabase = await createClient();
-  const { data } = await supabase.from("kategorien").select("*").order("name");
-  return data ?? [];
+  return listKategorien();
 }
 
 export default async function BearbeiteMaschineAdminPage({ params }: Props) {
   const { id } = await params;
-  const [maschine, kategorien] = await Promise.all([getMaschine(id), getKategorien()]);
+  const [maschine, kategorien] = await Promise.all([getMaschineById(id), getKategorien()]);
 
   if (!maschine) notFound();
 
