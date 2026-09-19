@@ -10,6 +10,9 @@ export async function proxy(request: NextRequest) {
   const token = await getToken({
     req: request,
     secret: process.env.AUTH_SECRET,
+    // Auth.js setzt unter HTTPS `__Secure-authjs.session-token` —
+    // ohne secureCookie sucht getToken den falschen Cookie-Namen.
+    secureCookie: request.nextUrl.protocol === "https:",
   });
 
   if (isAdminRoute && !isLoginPage && !token) {

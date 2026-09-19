@@ -25,15 +25,17 @@ export default function AdminLoginPage() {
       email,
       password,
       redirect: false,
+      callbackUrl: "/admin/dashboard",
     });
 
     if (result?.error) {
       setError("Ungültige E-Mail-Adresse oder Passwort.");
       setLoading(false);
-    } else {
-      router.push("/admin/dashboard");
-      router.refresh();
+      return;
     }
+
+    router.replace(result?.url ?? "/admin/dashboard");
+    router.refresh();
   }
 
   return (
