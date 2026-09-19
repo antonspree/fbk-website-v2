@@ -9,6 +9,7 @@
     "lint": "eslint",
     "db:migrate": "tsx scripts/apply-schema.ts",
     "db:migrate-data": "tsx scripts/migrate-from-supabase.ts",
+    "db:seed-kategorien": "tsx scripts/seed-kategorien.ts",
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
