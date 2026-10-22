@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ChevronRight, Phone, Mail, MapPin, Clock } from "lucide-react";
 import { KontaktFormular } from "@/components/forms/KontaktFormular";
 import { LagerstandorteKarten } from "@/components/common/LagerstandorteKarten";
-import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
+import { firmenadresseZeilen, lagerstandorte, mobilAlfredOtto, mobilDanielOtto, telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Kontakt – Firmenberatung Kassel",
@@ -95,12 +95,12 @@ export default function KontaktPage() {
                   </div>
                   <div>
                     <p className="font-semibold text-[#6397cc] text-sm mb-1">Telefon</p>
-                    <a href="tel:+4956057068" className="text-gray-700 hover:text-[#1f4a73] text-sm transition-colors block">
-                      +49 (0) 5605 – 70686
+                    <a href={telefonFestnetz.href} className="text-gray-700 hover:text-[#1f4a73] text-sm transition-colors block">
+                      {telefonFestnetz.anzeige}
                     </a>
                     <p className="text-gray-500 text-xs mt-1">
-                      Alfred Otto Mobil: <a href="tel:+4915121253264" className="hover:text-[#1f4a73]">+49 (0) 151 – 21253264</a><br />
-                      Daniel Otto Mobil: <a href="tel:+4917317244455" className="hover:text-[#1f4a73]">+49 (0) 173 – 1724445</a>
+                      Alfred Otto Mobil: <a href={mobilAlfredOtto.href} className="hover:text-[#1f4a73]">{mobilAlfredOtto.anzeige}</a><br />
+                      Daniel Otto Mobil: <a href={mobilDanielOtto.href} className="hover:text-[#1f4a73]">{mobilDanielOtto.anzeige}</a>
                     </p>
                   </div>
                 </div>

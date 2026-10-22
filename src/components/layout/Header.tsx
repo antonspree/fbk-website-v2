@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, Phone } from "lucide-react";
+import { Menu, Phone, Smartphone } from "lucide-react";
 import { INSTAGRAM_URL } from "@/lib/site";
 import { InstagramIcon } from "@/components/icons/InstagramIcon";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { SiteLogo } from "@/components/layout/SiteLogo";
+import { mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 
 const navLinks = [
   {
@@ -95,11 +96,18 @@ export function Header() {
               <InstagramIcon className="w-5 h-5" />
             </a>
             <a
-              href="tel:+4956057068"
+              href={telefonFestnetz.href}
               className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
             >
               <Phone className="w-4 h-4 text-[#1f4a73]" />
-              <span>05605 – 70686</span>
+              <span>{telefonFestnetz.kurz}</span>
+            </a>
+            <a
+              href={mobilAlfredOtto.href}
+              className="hidden xl:flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
+            >
+              <Smartphone className="w-4 h-4 text-[#1f4a73]" />
+              <span>{mobilAlfredOtto.kurz}</span>
             </a>
             <Button asChild size="sm" className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
               <Link href="/kontakt">Anfrage senden</Link>
@@ -163,11 +171,18 @@ export function Header() {
                     <span>Instagram</span>
                   </a>
                   <a
-                    href="tel:+4956057068"
+                    href={telefonFestnetz.href}
                     className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
                   >
                     <Phone className="w-4 h-4 text-[#1f4a73]" />
-                    <span>05605 – 70686</span>
+                    <span>{telefonFestnetz.kurz}</span>
+                  </a>
+                  <a
+                    href={mobilAlfredOtto.href}
+                    className="flex items-center gap-2 text-white/80 hover:text-white text-sm transition-colors"
+                  >
+                    <Smartphone className="w-4 h-4 text-[#1f4a73]" />
+                    <span>Alfred Otto mobil: {mobilAlfredOtto.kurz}</span>
                   </a>
                   <Button asChild className="w-full bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
                     <Link href="/kontakt">Anfrage senden</Link>

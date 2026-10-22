@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
+import { Phone, Smartphone, Mail, MapPin } from "lucide-react";
+import { firmenadresseZeilen, lagerstandorte, mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 import { SiteLogo } from "@/components/layout/SiteLogo";
 
 const footerLinks = {
@@ -75,11 +75,18 @@ export function Footer() {
                 </div>
               </div>
               <a
-                href="tel:+4956057068"
+                href={telefonFestnetz.href}
                 className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors group"
               >
                 <Phone className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
-                <span>+49 (0) 5605 – 70686</span>
+                <span>{telefonFestnetz.anzeige}</span>
+              </a>
+              <a
+                href={mobilAlfredOtto.href}
+                className="flex items-center gap-3 text-white/70 hover:text-white text-sm transition-colors group"
+              >
+                <Smartphone className="w-4 h-4 text-[#1f4a73] flex-shrink-0" />
+                <span>Alfred Otto mobil: {mobilAlfredOtto.anzeige}</span>
               </a>
               <a
                 href="mailto:info@firmenberatung-kassel.de"

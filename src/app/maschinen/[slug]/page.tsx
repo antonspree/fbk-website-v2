@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, Phone, Mail, Calendar, Building2, CheckCircle2 } from "lucide-react";
+import { ChevronRight, Phone, Smartphone, Mail, Calendar, Building2, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { MaschineGalerie } from "@/components/maschinen/MaschineGalerie";
 import { SpecsTabelle } from "@/components/maschinen/SpecsTabelle";
 import { AnfrageFormular } from "@/components/forms/AnfrageFormular";
 import { PreisAnzeige } from "@/components/common/PreisAnzeige";
 import { getMaschineBySlug, listAllMaschineSlugs } from "@/lib/db/queries";
+import { mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -186,11 +187,18 @@ export default async function MaschineDetailPage({ params }: Props) {
               <div className="bg-[#6397cc] rounded-lg p-5 space-y-3">
                 <p className="text-white font-semibold text-sm">Haben Sie Interesse?</p>
                 <a
-                  href="tel:+4956057068"
+                  href={telefonFestnetz.href}
                   className="flex items-center gap-3 text-white/80 hover:text-white text-sm transition-colors"
                 >
                   <Phone className="w-4 h-4 text-[#1f4a73]" />
-                  <span>+49 (0) 5605 – 70686</span>
+                  <span>{telefonFestnetz.anzeige}</span>
+                </a>
+                <a
+                  href={mobilAlfredOtto.href}
+                  className="flex items-center gap-3 text-white/80 hover:text-white text-sm transition-colors"
+                >
+                  <Smartphone className="w-4 h-4 text-[#1f4a73]" />
+                  <span>Alfred Otto mobil: {mobilAlfredOtto.anzeige}</span>
                 </a>
                 <a
                   href="mailto:info@firmenberatung-kassel.de"

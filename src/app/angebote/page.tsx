@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { PreisAnzeige } from "@/components/common/PreisAnzeige";
 import { listAngebote } from "@/lib/db/queries";
 import { formatDatum } from "@/lib/utils";
+import { mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Aktuelle Angebote & Schnäppchen",
@@ -144,11 +145,15 @@ export default async function AngebotePage() {
                 Neues Angebot verpassen? Rufen Sie uns an – wir informieren Sie gerne.
               </p>
               <a
-                href="tel:+4956057068"
+                href={telefonFestnetz.href}
                 className="inline-block bg-[#1f4a73] hover:bg-[#173a58] text-white font-semibold px-6 py-2.5 rounded transition-colors text-sm"
               >
-                +49 (0) 5605 – 70686
+                {telefonFestnetz.anzeige}
               </a>
+              <p className="text-white/70 text-xs mt-3">
+                Alfred Otto mobil:{" "}
+                <a href={mobilAlfredOtto.href} className="text-white hover:underline">{mobilAlfredOtto.anzeige}</a>
+              </p>
             </div>
           </div>
         </div>

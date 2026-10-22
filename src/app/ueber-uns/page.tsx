@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronRight, Phone, Mail, MapPin } from "lucide-react";
+import { ChevronRight, Phone, Smartphone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { firmenadresseZeilen, lagerstandorte } from "@/lib/adressen";
+import { firmenadresseZeilen, lagerstandorte, mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Über uns – Firmenberatung Kassel Inh. Alfred Otto e.K.",
@@ -141,9 +141,13 @@ export default function UeberUnsPage() {
                     </ul>
                   </div>
                 </div>
-                <a href="tel:+4956057068" className="flex items-center gap-3 text-gray-700 hover:text-[#1f4a73] transition-colors">
+                <a href={telefonFestnetz.href} className="flex items-center gap-3 text-gray-700 hover:text-[#1f4a73] transition-colors">
                   <Phone className="w-4 h-4 text-[#1f4a73]" />
-                  +49 (0) 5605 – 70686
+                  {telefonFestnetz.anzeige}
+                </a>
+                <a href={mobilAlfredOtto.href} className="flex items-center gap-3 text-gray-700 hover:text-[#1f4a73] transition-colors">
+                  <Smartphone className="w-4 h-4 text-[#1f4a73]" />
+                  Alfred Otto mobil: {mobilAlfredOtto.anzeige}
                 </a>
                 <a href="mailto:info@firmenberatung-kassel.de" className="flex items-center gap-3 text-gray-700 hover:text-[#1f4a73] transition-colors">
                   <Mail className="w-4 h-4 text-[#1f4a73]" />

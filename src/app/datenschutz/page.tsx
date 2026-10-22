@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung",
@@ -30,7 +31,7 @@ export default function DatenschutzPage() {
               Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br /><br />
               Firmenberatung Kassel Inh. Alfred Otto e.K.<br />
               Walburger Straße 8, 34260 Kaufungen<br />
-              Telefon: +49 (0) 5605 – 70686<br />
+              Telefon: {telefonFestnetz.anzeige}<br />
               E-Mail: info@firmenberatung-kassel.de
             </p>
           </section>

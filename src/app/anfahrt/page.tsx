@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, Car, Bus, ParkingSquare } from "lucide-react";
 import { LagerstandorteKarten } from "@/components/common/LagerstandorteKarten";
-import { lagerstandorte, firmenadresseZeilen } from "@/lib/adressen";
+import { lagerstandorte, firmenadresseZeilen, mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Anfahrt – So finden Sie uns",
@@ -123,8 +123,11 @@ export default function AnfahrtPage() {
               <p className="text-white/70 text-sm">
                 Bitte vereinbaren Sie Ihren Besuch vorab telefonisch. Wir freuen uns auf Sie!
               </p>
-              <a href="tel:+4956057068" className="mt-3 inline-block text-[#1f4a73] font-semibold text-sm hover:text-sky-200 transition-colors">
-                +49 (0) 5605 – 70686
+              <a href={telefonFestnetz.href} className="mt-3 inline-block text-[#1f4a73] font-semibold text-sm hover:text-sky-200 transition-colors">
+                {telefonFestnetz.anzeige}
+              </a>
+              <a href={mobilAlfredOtto.href} className="mt-1 block text-[#1f4a73] font-semibold text-sm hover:text-sky-200 transition-colors">
+                Alfred Otto mobil: {mobilAlfredOtto.anzeige}
               </a>
             </div>
           </div>

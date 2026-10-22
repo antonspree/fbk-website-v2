@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, CheckCircle2, Phone } from "lucide-react";
 import { VerkaufFormular } from "@/components/forms/VerkaufFormular";
+import { mobilAlfredOtto, mobilDanielOtto, telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Maschine verkaufen – Wir kaufen Ihre Werkzeugmaschinen",
@@ -84,15 +85,15 @@ export default function MaschinenVerkaufenPage() {
                 innerhalb von 24 Stunden bei Ihnen.
               </p>
               <a
-                href="tel:+4956057068"
+                href={telefonFestnetz.href}
                 className="flex items-center gap-3 text-white hover:text-[#1f4a73] font-semibold transition-colors"
               >
                 <Phone className="w-5 h-5 text-[#1f4a73]" />
-                +49 (0) 5605 – 70686
+                {telefonFestnetz.anzeige}
               </a>
               <p className="text-white/60 text-xs">
-                Alfred Otto Mobil: +49 (0) 151 – 21253264<br />
-                Daniel Otto Mobil: +49 (0) 173 – 1724445
+                Alfred Otto Mobil: <a href={mobilAlfredOtto.href} className="hover:text-white">{mobilAlfredOtto.anzeige}</a><br />
+                Daniel Otto Mobil: <a href={mobilDanielOtto.href} className="hover:text-white">{mobilDanielOtto.anzeige}</a>
               </p>
             </div>
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ChevronRight, MessageSquare, ShoppingBag, Truck, BarChart3, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { mobilAlfredOtto, telefonFestnetz } from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Unser Service rund um Werkzeugmaschinen",
@@ -103,10 +104,16 @@ export default function ServicePage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="tel:+4956057068"
+                href={telefonFestnetz.href}
                 className="text-[#1f4a73] font-heading font-bold text-xl hover:text-sky-200 transition-colors"
               >
-                +49 (0) 5605 – 70686
+                {telefonFestnetz.anzeige}
+              </a>
+              <a
+                href={mobilAlfredOtto.href}
+                className="text-[#1f4a73] font-heading font-bold text-xl hover:text-sky-200 transition-colors"
+              >
+                Mobil: {mobilAlfredOtto.anzeige}
               </a>
               <Button asChild className="bg-[#1f4a73] hover:bg-[#173a58] text-white border-0 font-semibold">
                 <Link href="/kontakt">Nachricht senden</Link>

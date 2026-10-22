@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import {
+  handelsregister,
+  mobilAlfredOtto,
+  mobilDanielOtto,
+  telefonFestnetz,
+  umsatzsteuerId,
+} from "@/lib/adressen";
 
 export const metadata: Metadata = {
   title: "Impressum",
   description:
-    "Impressum der Firmenberatung Kassel Inh. Alfred Otto e.K. – Angaben gemäß § 5 TMG.",
+    "Impressum der Firmenberatung Kassel Inh. Alfred Otto e.K. – Angaben gemäß § 5 DDG.",
 };
 
 export default function ImpressumPage() {
@@ -26,7 +33,7 @@ export default function ImpressumPage() {
         <div className="bg-white rounded-lg p-8 border border-gray-200 space-y-7 text-sm text-gray-700 leading-relaxed">
           <section>
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">
-              Angaben gemäß § 5 TMG
+              Angaben gemäß § 5 DDG
             </h2>
             <p>
               Firmenberatung Kassel Inh. Alfred Otto e.K.<br />
@@ -62,7 +69,9 @@ export default function ImpressumPage() {
           <section>
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Kontakt</h2>
             <p>
-              Telefon: +49 (0) 5605 – 70686<br />
+              Telefon: <a href={telefonFestnetz.href} className="text-[#1f4a73] hover:underline">{telefonFestnetz.anzeige}</a><br />
+              Alfred Otto mobil: <a href={mobilAlfredOtto.href} className="text-[#1f4a73] hover:underline">{mobilAlfredOtto.anzeige}</a><br />
+              Daniel Otto mobil: <a href={mobilDanielOtto.href} className="text-[#1f4a73] hover:underline">{mobilDanielOtto.anzeige}</a><br />
               E-Mail:{" "}
               <a href="mailto:info@firmenberatung-kassel.de" className="text-[#1f4a73] hover:underline">
                 info@firmenberatung-kassel.de
@@ -73,8 +82,7 @@ export default function ImpressumPage() {
           <section>
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Registereintrag</h2>
             <p>
-              Eingetragen im Handelsregister beim Amtsgericht Kassel<br />
-              Registernummer: [einzufügen]
+              Handelsregister: {handelsregister}
             </p>
           </section>
 
@@ -82,13 +90,13 @@ export default function ImpressumPage() {
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Umsatzsteuer-ID</h2>
             <p>
               Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG:<br />
-              [einzufügen]
+              {umsatzsteuerId}
             </p>
           </section>
 
           <section>
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">
-              Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+              Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
             </h2>
             <p>
               Alfred Otto<br />
@@ -100,19 +108,6 @@ export default function ImpressumPage() {
           <section>
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Streitschlichtung</h2>
             <p>
-              Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:{" "}
-              <a
-                href="https://ec.europa.eu/consumers/odr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#1f4a73] hover:underline"
-              >
-                https://ec.europa.eu/consumers/odr
-              </a>
-              <br />
-              Unsere E-Mail-Adresse finden Sie oben im Impressum.
-            </p>
-            <p className="mt-3">
               Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
               Verbraucherschlichtungsstelle teilzunehmen.
             </p>
@@ -121,8 +116,8 @@ export default function ImpressumPage() {
           <section>
             <h2 className="font-heading font-bold text-[#6397cc] text-lg mb-2">Haftung für Inhalte</h2>
             <p>
-              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
-              nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+              Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten
+              nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als
               Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
               Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
               Tätigkeit hinweisen.
